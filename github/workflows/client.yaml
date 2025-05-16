@@ -1,0 +1,23 @@
+name: client
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '/client/**'
+  pull_request:
+    branches: ['*']
+    paths:
+      - '/client/**'
+
+jobs:
+  client:
+    runs-on: ubuntu-20.04
+
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with: 
+        fetch-depth: 0
+

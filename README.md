@@ -13,7 +13,7 @@
 
 <!-- HEADER: Imagen de portada representativa -->
 <div align="center" width="100">
-  <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/8a1f394b1fa038c180d4a45697bbdf4ebbaeef2f/img/Recurso%202%404x-100.jpg"
+  <img src="https://github.com/schweigenderFlugel/dataverity/blob/23ef928db16fef3e6f0de3a62562b335a5039fa3/PM/img/Recurso%204%402x-100.jpg"
   alt="header"/>
 </div>
 

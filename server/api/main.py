@@ -1,10 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from sqlmodel import create_engine, SQLModel, Session
+
 from middlewares.logger import RequestLoggerMiddleware
 from routes import consultancy
+from db import create_db_and_tables
 import uvicorn
 
-app = FastAPI()
+app = FastAPI(lifespan=create_db_and_tables)
 
 app.add_middleware(
   CORSMiddleware,

@@ -1,25 +1,16 @@
-FROM python:3.13-alpine3.21 AS build
+FROM python:3.13-alpine3.21
 
-WORKDIR /source
+WORKDIR /api
 
 COPY requirements.txt ./
 
-RUN python3 -m venv ./venv
-
-RUN ./venv/bin/python3 -m ensurepip --upgrade && \
-    ./venv/bin/pip install -r ./requirements.txt
-
-# Build para la imagen final
-FROM python:3.13-alpine3.21 AS final
-
-WORKDIR /source
-
-# Paquetes para hacer funcionar scikit-learn
-RUN apk upgrade --no-cache && \
-    apk add --no-cache libgfortran openblas libgomp libstdc++
-
-COPY --from=build /source ./
+RUN pip install --no-cache-dir -r ./requirements.txt
 
 COPY api ./
 
-CMD ["./venv/bin/uvicorn", "models_app:app", "--host", "0.0.0.0", "--port", "8080"]
+RUN addgroup -g 1234 dataverity-group && \
+  adduser -D -u 1234 -G dataverity-group dataverity-user
+
+USER dataverity-user:dataverity-group
+
+CMD ["python", "main.py"]

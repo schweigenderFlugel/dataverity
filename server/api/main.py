@@ -1,8 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sqlmodel import create_engine, SQLModel, Session
 
-from middlewares.logger import RequestLoggerMiddleware
+# from middlewares.logger import RequestLoggerMiddleware
 from routes import consultancy
 from db import create_db_and_tables
 import uvicorn
@@ -17,7 +16,7 @@ app.add_middleware(
   allow_headers=["*"],
 )
 
-app.add_middleware(RequestLoggerMiddleware)
+# app.add_middleware(RequestLoggerMiddleware)
 app.include_router(consultancy.router)
 
 @app.get('/')
@@ -27,7 +26,7 @@ async def home():
 if __name__ == "__main__":
   uvicorn.run(
     "main:app",
-    host="localhost",
+    host="0.0.0.0",
     port=3000,
     reload=True,
     use_colors=True

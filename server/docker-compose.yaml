@@ -19,5 +19,17 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
+  app:
+    image: schweigenderflugel/dataverity:0
+    container_name: dataverity-app
+    hostname: localhost
+    depends_on: 
+      postgres: 
+        condition: service_healthy
+    env_file:
+      - ./.env
+    ports:
+      - '3000:3000'
+
 volumes:
   postgres-data:

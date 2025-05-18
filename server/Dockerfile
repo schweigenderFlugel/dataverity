@@ -1,9 +1,5 @@
 FROM python:3.13-alpine3.21 AS build
 
-# Paquetes para compilar el paquete scikit-learn
-RUN apk upgrade --no-cache && \
-    apk add --no-cache gcc g++ python3-dev musl-dev
-
 WORKDIR /source
 
 COPY requirements.txt ./

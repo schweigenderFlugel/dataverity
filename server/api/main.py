@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.middlewares.logger import RequestLoggerMiddleware
-from api.routes import auth
+from middlewares.logger import RequestLoggerMiddleware
+from routes import consultancy
+import uvicorn
 
 app = FastAPI()
 
@@ -10,12 +11,21 @@ app.add_middleware(
   allow_origins=["*"],
   allow_credentials=True,
   allow_methods=["*"],
-  allow_headers=["*"]
+  allow_headers=["*"],
 )
 
 app.add_middleware(RequestLoggerMiddleware)
-app.include_router(auth.router)
+app.include_router(consultancy.router)
 
 @app.get('/')
 async def home():
-  return { "message": "Hallo Welt" }
+  return { "message": "Hallo Welto" }
+
+if __name__ == "__main__":
+  uvicorn.run(
+    "main:app",
+    host="localhost",
+    port=3000,
+    reload=True,
+    use_colors=True
+  )

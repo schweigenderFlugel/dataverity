@@ -1,6 +1,14 @@
-from fastapi import APIRouter, Depends, Body, HTTPException
+from fastapi import APIRouter, Body, HTTPException
 from sqlalchemy.exc import IntegrityError
-from models.students import Student, StudentCreate
+from sqlmodel import select
+from fastapi.responses import StreamingResponse
+from uuid import UUID
+from datetime import datetime
+from enum import Enum
+import io
+import csv
+
+from models.consultancy import ConsultBase, Consult, ConsultCreate, ErrorResponse
 from db import DatabaseDep
 from clerk import AuthDep
 from utils.csv_utils import csv_file
@@ -10,45 +18,98 @@ router = APIRouter(
   prefix='/consultancy',
 )
 
-@router.post('', status_code=201, tags=['Consultancy'], summary='Consultancy')
+def flatten(value):
+    if isinstance(value, (Enum, UUID, datetime)):
+        return str(value)
+    return value
+
+@router.post(
+  '',
+  status_code=201,
+  tags=['Consultancy'], 
+  summary='Create a new consult',
+  responses={
+    201: ErrorResponse(
+      description='Consult successfully created',
+      content_type='application/json',
+      message='Consult successfully created!',
+    ).custom_response(),
+    400: ErrorResponse(
+      description='The consult already exists', 
+      content_type='application/json',
+      message="The consult already exists"
+    ).custom_response(),
+    401: ErrorResponse(
+      description='The user is not authenticated', 
+      content_type='application/json',
+      message="Not authenticated"
+    ).custom_response(),
+    500: ErrorResponse(
+      description='Unexpected error has ocurred', 
+      content_type='application/json',
+      message="Unexpected internal server error"
+    ).custom_response(),
+  },
+  )
 async def consultancy(
   auth: AuthDep,
   session: DatabaseDep,
-  body: StudentCreate = Body(),
+  body: ConsultCreate = Body(),
 ):
   try:
-    consult = Student.model_validate(body.model_dump())
+    consult = Consult.model_validate(body.model_dump())
     session.add(consult)
     session.commit()
     session.refresh(consult)
-    keys = [k for k in consult.model_dump().keys()]
-    values = [v for v in consult.model_dump().values()]
-    csv_file(keys, values)
     return { "message": 'Consult successfully created!' }
   except Exception as e:
     if isinstance(e, IntegrityError) and "duplicate key value violates unique constraint" in str(e.orig):  # PostgreSQL
-      raise HTTPException(status_code=400, detail="The consult already exists!")
+      raise HTTPException(status_code=400, detail="The consult already exists")
     else:
-      raise HTTPException(status_code=500, detail='Unexpected error!')
+      raise HTTPException(status_code=500, detail=e)
     
-@router.post('', status_code=201, tags=['Consultancy'], summary='Consultancy')
-async def consultancy(
+@router.get('', 
+  status_code=200, 
+  tags=['Consultancy'], 
+  summary='Consultancy',
+  responses={
+    200: ErrorResponse(
+      description='Consult successfully created',
+      content_type='application/json',
+      message='Consult successfully created!',
+    ).custom_response(),
+    400: ErrorResponse(
+      description='The consult already exists', 
+      content_type='application/json',
+      message="The consult already exists"
+    ).custom_response(),
+    401: ErrorResponse(
+      description='The user is not authenticated', 
+      content_type='application/json',
+      message="Not authenticated"
+    ).custom_response(),
+    500: ErrorResponse(
+      description='Unexpected error has ocurred', 
+      content_type='application/json',
+      message="Unexpected internal server error"
+    ).custom_response(),
+  },
+)
+async def list_to_csv(
   auth: AuthDep,
   session: DatabaseDep,
-  body: StudentCreate = Body(),
 ):
-  try:
-    consult = Student.model_validate(body.model_dump())
-    session.add(consult)
-    session.commit()
-    session.refresh(consult)
-    keys = [k for k in consult.model_dump().keys()]
-    values = [v for v in consult.model_dump().values()]
-    csv_file(keys, values)
-    return { "message": 'Consult successfully created!' }
-  except Exception as e:
-    if isinstance(e, IntegrityError) and "duplicate key value violates unique constraint" in str(e.orig):  # PostgreSQL
-      raise HTTPException(status_code=400, detail="The consult already exists!")
-    else:
-      raise HTTPException(status_code=500, detail='Unexpected error!')
-    
+    buffer = io.StringIO()
+    consults = session.exec(select(Consult)).all()
+    keys = list(ConsultBase.model_fields.keys())
+    writer = csv.DictWriter(buffer, fieldnames=keys)
+    writer.writeheader()
+    for c in consults:
+      ignored = { "created_at", "updated_at", "id" }
+      writer.writerow(c.model_dump(exclude=ignored))
+    buffer.seek(0)
+    return StreamingResponse(
+      buffer,
+      media_type="text/csv",
+      headers={"Content-Disposition": "attachment; filename=studiantes.csv"}
+    )

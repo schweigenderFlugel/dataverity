@@ -10,7 +10,7 @@ DATABASE_URL = os.getenv('DATABASE_URL')
 engine = create_engine(DATABASE_URL)
 
 def create_db_and_tables(app: FastAPI):
-  SQLModel.metadata.create_all(engine)
+  SQLModel.metadata.create_all(engine, checkfirst=True)
   yield
 
 def get_db():

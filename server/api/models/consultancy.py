@@ -1,8 +1,10 @@
-from datetime import datetime
-from typing import Optional
+from abc import ABC, abstractmethod
+from datetime import datetime, timezone
+from typing import Optional, List
 from enum import Enum
 from uuid import UUID, uuid4
-from sqlmodel import SQLModel, Field, Column, Integer, String
+from pydantic import BaseModel
+from sqlmodel import SQLModel, Field, Column
 import sqlalchemy.dialects.postgresql as pg
 
 class Genero(str, Enum):
@@ -16,11 +18,11 @@ class TipoNEAE(str, Enum):
   Dislexia = 'Dislexia'
   Normal = 'Normal'
 
-class StudentBase(SQLModel):
+class ConsultBase(SQLModel):
   id_estudiante: int = Field(sa_column=Column(pg.INTEGER, unique=True))
-  legajo: str = Field(sa_column=Column(pg.VARCHAR, unique=True), max_length=10)
-  nombre: str = Field(sa_column=Column(pg.VARCHAR), max_length=30, description='Tiene que ser nombre completo')
-  edad: int = Field(sa_column=Column(pg.SMALLINT), max_length=10)
+  legajo: str = Field(sa_column=Column(pg.VARCHAR, unique=True))
+  nombre: str = Field(sa_column=Column(pg.VARCHAR), description='Tiene que ser nombre completo')
+  edad: int = Field(sa_column=Column(pg.SMALLINT))
   genero: Genero = Field(sa_column=Column(pg.ENUM(Genero)))
   grado: int = Field(sa_column=Column(pg.INTEGER))
   asistencia_inicial: bool = Field(sa_column=Column(pg.BOOLEAN))
@@ -39,7 +41,7 @@ class StudentBase(SQLModel):
   clima_escolar: int = Field(sa_column=Column(pg.INTEGER))
   capacitacion_docente_anual_horas: int = Field(sa_column=Column(pg.INTEGER))
   tenencia_director_anos: int = Field(sa_column=Column(pg.INTEGER))
-  adecuaciones_curriculare: int = Field(Integer, nullable=False)
+  adecuaciones_curriculare: int = Field(sa_column=Column(pg.INTEGER))
   tipo_nea: TipoNEAE = Field(sa_column=Column(pg.ENUM(TipoNEAE)))
   violencia_familia: int = Field(sa_column=Column(pg.INTEGER))
   enfermedad_grave_familia: int = Field(sa_column=Column(pg.INTEGER))
@@ -47,13 +49,40 @@ class StudentBase(SQLModel):
   resilencia_familia: int = Field(sa_column=Column(pg.INTEGER))
   conducta_riesgo_observada: int = Field(sa_column=Column(pg.INTEGER))
     
-class Student(StudentBase, table=True):
-  id: Optional[UUID] = Field(sa_column=Column(pg.UUID, nullable=True, primary_key=True), default=uuid4())
-  createdAt: Optional[int] = Field(sa_column=Column(pg.DATE, nullable=True), default=datetime.timestamp(datetime.now()))
-  updatedAt: Optional[int] = Field(sa_column=Column(pg.DATE, nullable=True), default=datetime.timestamp(datetime.now()))
+class Consult(ConsultBase, table=True):
+  id: Optional[UUID] = Field(sa_column=Column(pg.UUID, primary_key=True), default_factory=lambda: uuid4())
+  created_at: Optional[datetime] = Field(sa_column=Column(pg.TIMESTAMP), default_factory=lambda: datetime.now(timezone.utc))
+  updated_at: Optional[datetime] = Field(sa_column=Column(pg.TIMESTAMP), default_factory=lambda: datetime.now(timezone.utc))
 
-class StudentCreate(StudentBase):
+class ConsultCreate(ConsultBase):
   pass
 
-class StudentUpdate(Optional[StudentBase]):
-  pass
+class AbstractErrorResponse(BaseModel, ABC):
+  description: str
+  content_type: str
+  message: str
+
+  @abstractmethod
+  def custom_response() -> dict:
+    pass
+
+class ErrorResponse(AbstractErrorResponse):
+  def custom_response(self) -> dict:
+    return {
+      "description": self.description,
+      "content": {
+        self.content_type: {
+          "example": {
+            "description": self.description,
+            "message": self.message
+          }
+        }
+      }
+    }
+  
+def select_fields(model: type[SQLModel], ignored: dict) -> List:
+  select = []
+  for campo in model.__fields__.keys():
+    if campo not in ignored:
+      select.append(getattr(model, campo))
+  return select

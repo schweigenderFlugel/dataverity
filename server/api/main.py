@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 
 # from middlewares.logger import RequestLoggerMiddleware
 from routes import consultancy
 from db import create_db_and_tables
-import uvicorn
+from clerk import AuthDep
 
 app = FastAPI(lifespan=create_db_and_tables)
 
@@ -20,7 +21,7 @@ app.add_middleware(
 app.include_router(consultancy.router)
 
 @app.get('/')
-async def home():
+async def home(auth: AuthDep):
   return { "message": "Hallo Welto" }
 
 if __name__ == "__main__":

@@ -46,9 +46,7 @@ jobs:
         working-directory: ./server
       
       - name: Tests E2E
-        run: |
-          export PYTHONPATH=$PYTHONPATH:$(pwd)
-          coverage run --source=api -m pytest tests/
+        run: coverage run --source=api -m pytest tests/
         working-directory: ./server
         env:
           DATABASE_URL: 'postgresql://dataverity:1cf4eb8f04a84637@localhost:5432/dataverity-test-db'

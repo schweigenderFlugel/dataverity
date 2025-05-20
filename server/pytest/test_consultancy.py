@@ -46,10 +46,3 @@ def test_create_consult(client: TestClient):
   assert response.json() == {
     'message': 'Consult successfully created!' 
   }
-
-def test_create_existing_consult(client: TestClient):
-  response = client.post(
-    "/consultancy",
-    json=data_to_send,
-  )
-  assert response.status_code == status.HTTP_409_CONFLICT

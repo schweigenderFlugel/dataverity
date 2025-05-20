@@ -38,7 +38,7 @@ class ConsultBase(SQLModel):
   clima_escolar: int = Field(sa_column=Column(pg.SMALLINT), gt=0, lt=6)
   capacitacion_docente_anual_horas: int = Field(sa_column=Column(pg.SMALLINT))
   tenencia_director_anos: int = Field(sa_column=Column(pg.INTEGER))
-  adecuaciones_curriculare: bool = Field(sa_column=Column(pg.BOOLEAN))
+  adecuaciones_curriculares: bool = Field(sa_column=Column(pg.BOOLEAN))
   tipo_nea: TipoNEAE = Field(sa_column=Column(pg.ENUM(TipoNEAE)))
   violencia_familia: bool = Field(sa_column=Column(pg.BOOLEAN))
   enfermedad_grave_familia: bool = Field(sa_column=Column(pg.BOOLEAN))

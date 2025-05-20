@@ -7,13 +7,17 @@ from api.main import app
 from dotenv import load_dotenv
 import os
 
+from api.db import get_session
+
+load_dotenv()
+
 DATABASE_URL = os.getenv('DATABASE_URL')
 engine = create_engine(DATABASE_URL)
 
 engine = create_engine(
     DATABASE_URL,
-    connect_args={'check_same_thread': False}, # check_same_thread: FastAPI corre en un entono multihilo, y false es para evitar que se ejecute un codigo en un hilo y un codigo en otro 
-    poolclass=StaticPool, # StaticPool: para crear un base de datos temporal en la memoria
+    connect_args={'check_same_thread': False},
+    poolclass=StaticPool,
 )
 
 @pytest.fixture(name='session')

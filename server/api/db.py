@@ -13,8 +13,8 @@ def create_db_and_tables(app: FastAPI):
   SQLModel.metadata.create_all(engine, checkfirst=True)
   yield
 
-def get_db():
+def get_session():
   with Session(engine) as session:
     yield session
 
-DatabaseDep = Annotated[Session, Depends(get_db)]
+DatabaseDep = Annotated[Session, Depends(get_session)]

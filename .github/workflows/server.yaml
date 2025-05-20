@@ -56,7 +56,7 @@ jobs:
       - name: Coverage
         run: coveralls --service=github
         working-directory: ./server
-        with:
+        env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
       - name: SonarQube Scan

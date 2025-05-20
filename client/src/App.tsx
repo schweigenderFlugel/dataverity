@@ -1,22 +1,12 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/clerk-react";
 import "./App.css";
+import { BrowserRouter } from "react-router";
+import AppRoutes from "./router/routes";
 
 function App() {
   return (
-    <header>
-      <h1>Dataverity</h1>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </header>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
 

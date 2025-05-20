@@ -32,40 +32,25 @@ data_to_send = {
   'conducta_riesgo_observada': True, 
 }
 
-def test_creat_customer(client: TestClient):
+def test_get_consults(client: TestClient):
   reponse = client.get('/consultancy')
-  assert reponse.status_code == status.HTTP_201_CREATED
+  assert reponse.status_code == status.HTTP_200_OK
 
 
-def test_create_item(client: TestClient):
+def test_create_consult(client: TestClient):
   response = client.post(
     "/consultancy",
-    headers={"X-Token": "coneofsilence"},
     json=data_to_send,
   )
-  assert response.status_code == 200
+  assert response.status_code == status.HTTP_201_CREATED
   assert response.json() == {
-    "id": "foobar",
-    "title": "Foo Bar",
-    "description": "The Foo Barters",
+    'message': 'Consult successfully created!' 
   }
 
-
-def test_create_item_bad_token(client: TestClient):
-  response = client.post(
-    "/consultancy",
-    headers={"X-Token": "hailhydra"},
-    json=data_to_send,
-  )
-  assert response.status_code == 400
-  assert response.json() == {"detail": "Invalid X-Token header"}
-
-
-def test_create_existing_item(client: TestClient):
+def test_create_existing_consult(client: TestClient):
   response = client.post(
     "/consultancy",
     headers={"X-Token": "coneofsilence"},
     json=data_to_send,
   )
   assert response.status_code == 409
-  assert response.json() == {"detail": "Item already exists"}

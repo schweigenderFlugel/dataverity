@@ -56,7 +56,7 @@ async def consultancy(
     return { "message": 'Consult successfully created!' }
   except Exception as e:
     if isinstance(e, IntegrityError) and "duplicate key value violates unique constraint" in str(e.orig):  # PostgreSQL
-      raise HTTPException(status_code=400, detail="The consult already exists")
+      raise HTTPException(status_code=409, detail="The consult already exists")
     else:
       raise HTTPException(status_code=500, detail=e)
     

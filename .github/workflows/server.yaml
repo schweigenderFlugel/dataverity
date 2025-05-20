@@ -57,12 +57,3 @@ jobs:
         with:
           repo_token: ${{ secrets.COVERALLS_REPO_TOKEN }} # (En GitHub Actions)
           service_name: github-actions
-
-
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with: 
-          fetch-depth: 0
-

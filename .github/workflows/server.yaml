@@ -54,8 +54,10 @@ jobs:
           DATABASE_URL: 'postgresql://dataverity-test:1cf4eb8f04a84637@localhost:5432/dataverity-test-db'
           
       - name: Coverage
-        run: coveralls --repo-token=${{ secrets.COVERALLS_REPO_TOKEN }} --service=github
+        run: coveralls --service=github
         working-directory: ./server
+        with:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5

@@ -17,7 +17,7 @@ class TipoNEAE(str, Enum):
   Normal = 'Normal'
 
 class ConsultBase(SQLModel):
-  legajo: str = Field(sa_column=Column(pg.VARCHAR, unique=True))
+  legajo: str = Field(sa_column=Column(pg.VARCHAR), unique=True)
   nombre: str = Field(sa_column=Column(pg.VARCHAR), description='Tiene que ser nombre completo')
   edad: int = Field(sa_column=Column(pg.SMALLINT), description='Tiene que ser un número entero', gt=4, lt=14)
   genero: Genero = Field(sa_column=Column(pg.ENUM(Genero)))

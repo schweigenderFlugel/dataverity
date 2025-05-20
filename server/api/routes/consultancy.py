@@ -11,17 +11,11 @@ import csv
 from models.consultancy import ConsultBase, Consult, ConsultCreate, ErrorResponse
 from db import DatabaseDep
 from clerk import AuthDep
-from utils.csv_utils import csv_file
 
 router = APIRouter(
   tags=['Consultancy'],
   prefix='/consultancy',
 )
-
-def flatten(value):
-    if isinstance(value, (Enum, UUID, datetime)):
-        return str(value)
-    return value
 
 @router.post(
   '',
@@ -52,7 +46,7 @@ def flatten(value):
   },
   )
 async def consultancy(
-  auth: AuthDep,
+  # auth: AuthDep,
   session: DatabaseDep,
   body: ConsultCreate = Body(),
 ):
@@ -72,6 +66,7 @@ async def consultancy(
   status_code=200, 
   tags=['Consultancy'], 
   summary='Consultancy',
+  response_class=StreamingResponse,
   responses={
     200: ErrorResponse(
       description='Consult successfully created',
@@ -96,20 +91,20 @@ async def consultancy(
   },
 )
 async def list_to_csv(
-  auth: AuthDep,
+  # auth: AuthDep,
   session: DatabaseDep,
 ):
-    buffer = io.StringIO()
-    consults = session.exec(select(Consult)).all()
-    keys = list(ConsultBase.model_fields.keys())
-    writer = csv.DictWriter(buffer, fieldnames=keys)
-    writer.writeheader()
-    for c in consults:
-      ignored = { "created_at", "updated_at", "id" }
-      writer.writerow(c.model_dump(exclude=ignored))
-    buffer.seek(0)
-    return StreamingResponse(
-      buffer,
-      media_type="text/csv",
-      headers={"Content-Disposition": "attachment; filename=studiantes.csv"}
-    )
+  buffer = io.StringIO()
+  consults = session.exec(select(Consult)).all()
+  keys = list(ConsultBase.model_fields.keys())
+  writer = csv.DictWriter(buffer, fieldnames=keys)
+  writer.writeheader()
+  for c in consults:
+    ignored = {"created_at", "updated_at", "id"}
+    writer.writerow(c.model_dump(exclude=ignored))
+  buffer.seek(0)
+  return StreamingResponse(
+    buffer,
+    media_type="text/csv",
+    headers={"Content-Disposition": "attachment; filename=studiantes.csv"}
+  )

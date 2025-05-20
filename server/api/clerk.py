@@ -1,5 +1,6 @@
 from typing import Annotated
 from fastapi import Request, HTTPException, Depends
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from clerk_backend_api import Clerk
 from dotenv import load_dotenv
 import os
@@ -17,12 +18,10 @@ def protected_route(request: Request):
   client_token = auth_header.split(" ")[1]
     
   try:
-    client = clerk.clients.verify(client_token)
-    if not client or not client.is_valid:
+    client = clerk.authenticate_request(headers={"Authorization": f"Bearer {client_token}"})
+    if not client or not client.is_signed_in:
       raise HTTPException(status_code=401, detail="Invalid session")
   except Exception as e:
     raise HTTPException(status_code=401, detail=str(e))
-    
-  return {"message": f"Welcome, user {client.user_id}!"}
 
-AuthDep = Annotated[str, Depends(protected_route)]
+AuthDep = Annotated[HTTPAuthorizationCredentials, Depends(protected_route)]

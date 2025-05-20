@@ -79,10 +79,3 @@ class ErrorResponse(AbstractErrorResponse):
         }
       }
     }
-  
-def select_fields(model: type[SQLModel], ignored: dict) -> List:
-  select = []
-  for campo in model.__fields__.keys():
-    if campo not in ignored:
-      select.append(getattr(model, campo))
-  return select

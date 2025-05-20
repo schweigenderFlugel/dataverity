@@ -46,15 +46,15 @@ jobs:
         working-directory: ./server
       
       - name: Tests E2E
-        run: coverage run --source=api -m pytest tests/
+        run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          coverage run --source=api -m pytest tests/
         working-directory: ./server
         env:
           DATABASE_URL: 'postgresql://iupi-fintech-test:1cf4eb8f04a84637@localhost:5432/iupi-fintech-test-db'
           
       - name: Coverage
-        run: |
-          export PYTHONPATH=$PYTHONPATH:$(pwd)
-          coveralls --repo-token=${{ secrets.COVERALLS_REPO_TOKEN }} --service=github
+        run: coveralls --repo-token=${{ secrets.COVERALLS_REPO_TOKEN }} --service=github
         working-directory: ./server
 
       - name: SonarQube Scan

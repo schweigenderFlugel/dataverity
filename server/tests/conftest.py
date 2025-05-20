@@ -3,10 +3,9 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.pool import StaticPool
 from sqlmodel import SQLModel, Session
-from api.main import app
 from dotenv import load_dotenv
 import os
-
+from api.main import app
 from api.db import get_session
 
 load_dotenv()

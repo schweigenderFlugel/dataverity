@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Body, HTTPException
-from models.auth import UserBase
-from db import DatabaseDep
-from clerk import AuthDep
+from api.models.auth import UserBase
+from api.db import DatabaseDep
+from api.clerk import AuthDep
 
 router = APIRouter(
   tags=['Auth'],

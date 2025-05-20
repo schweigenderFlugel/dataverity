@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, Body, HTTPException
-from server.api.models.consultancy import Student, StudentCreate
+from models.auth import UserBase
 from db import DatabaseDep
 from clerk import AuthDep
 

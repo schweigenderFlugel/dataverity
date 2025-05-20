@@ -36,8 +36,25 @@ jobs:
         with: 
           fetch-depth: 0
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install packages
+        run: pip install --no-cache-dir -r requirements.dev.txt
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      
+      - name: Tests E2E
+        run: coverage run --source=api -m pytest tests/
+
+      - name: Coverage
+        run: coveralls
+        with:
+          repo_token: ${{ secrets.COVERALLS_REPO_TOKEN }} # (En GitHub Actions)
+          service_name: github-actions
 

@@ -8,7 +8,8 @@ from enum import Enum
 import io
 import csv
 
-from models.consultancy import ConsultBase, Consult, ConsultCreate, ErrorResponse
+from models.consultancy import ConsultBase, Consult, ConsultCreate
+from models.response import Response
 from db import DatabaseDep
 from clerk import AuthDep
 
@@ -23,22 +24,22 @@ router = APIRouter(
   tags=['Consultancy'], 
   summary='Create a new consult',
   responses={
-    201: ErrorResponse(
+    201: Response(
       description='Consult successfully created',
       content_type='application/json',
       message='Consult successfully created!',
     ).custom_response(),
-    400: ErrorResponse(
+    400: Response(
       description='The consult already exists', 
       content_type='application/json',
       message="The consult already exists"
     ).custom_response(),
-    401: ErrorResponse(
+    401: Response(
       description='The user is not authenticated', 
       content_type='application/json',
       message="Not authenticated"
     ).custom_response(),
-    500: ErrorResponse(
+    500: Response(
       description='Unexpected error has ocurred', 
       content_type='application/json',
       message="Unexpected internal server error"
@@ -68,22 +69,22 @@ async def consultancy(
   summary='Consultancy',
   response_class=StreamingResponse,
   responses={
-    200: ErrorResponse(
+    200: Response(
       description='Consult successfully created',
       content_type='application/json',
       message='Consult successfully created!',
     ).custom_response(),
-    400: ErrorResponse(
+    400: Response(
       description='The consult already exists', 
       content_type='application/json',
       message="The consult already exists"
     ).custom_response(),
-    401: ErrorResponse(
+    401: Response(
       description='The user is not authenticated', 
       content_type='application/json',
       message="Not authenticated"
     ).custom_response(),
-    500: ErrorResponse(
+    500: Response(
       description='Unexpected error has ocurred', 
       content_type='application/json',
       message="Unexpected internal server error"

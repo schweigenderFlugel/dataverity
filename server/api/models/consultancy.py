@@ -1,9 +1,7 @@
-from abc import ABC, abstractmethod
 from datetime import datetime, timezone
-from typing import Optional, List
+from typing import Optional
 from enum import Enum
 from uuid import UUID, uuid4
-from pydantic import BaseModel
 from sqlmodel import SQLModel, Field, Column
 import sqlalchemy.dialects.postgresql as pg
 
@@ -19,35 +17,34 @@ class TipoNEAE(str, Enum):
   Normal = 'Normal'
 
 class ConsultBase(SQLModel):
-  id_estudiante: int = Field(sa_column=Column(pg.INTEGER, unique=True))
   legajo: str = Field(sa_column=Column(pg.VARCHAR, unique=True))
   nombre: str = Field(sa_column=Column(pg.VARCHAR), description='Tiene que ser nombre completo')
-  edad: int = Field(sa_column=Column(pg.SMALLINT))
+  edad: int = Field(sa_column=Column(pg.SMALLINT), description='Tiene que ser un número entero', gt=4, lt=14)
   genero: Genero = Field(sa_column=Column(pg.ENUM(Genero)))
-  grado: int = Field(sa_column=Column(pg.INTEGER))
+  grado: int = Field(sa_column=Column(pg.INTEGER), gt=0, lt=7)
   asistencia_inicial: bool = Field(sa_column=Column(pg.BOOLEAN))
   asistencia: int = Field(sa_column=Column(pg.INTEGER))
   calificacion_matematica: float = Field(sa_column=Column(pg.FLOAT))
   calificacion_lengua: float = Field(sa_column=Column(pg.FLOAT))
   horas_clase_semanales: int = Field(sa_column=Column(pg.INTEGER))
-  motivacion: int = Field(sa_column=Column(pg.INTEGER))
-  habilidades_de_autoregulacion: int = Field(sa_column=Column(pg.INTEGER))
-  habilidades_interpersonales: int = Field(sa_column=Column(pg.INTEGER))
-  habilidades_intrapersonales: int = Field(sa_column=Column(pg.INTEGER))
-  conducta_riesgo: int = Field(sa_column=Column(pg.INTEGER))
-  libros_en_casa: int = Field(sa_column=Column(pg.INTEGER))
-  internet_en_casa: int = Field(sa_column=Column(pg.INTEGER))
-  distancia_escuela_km: int = Field(sa_column=Column(pg.INTEGER))
-  clima_escolar: int = Field(sa_column=Column(pg.INTEGER))
-  capacitacion_docente_anual_horas: int = Field(sa_column=Column(pg.INTEGER))
+  motivacion: int = Field(sa_column=Column(pg.SMALLINT), gt=0, lt=6)
+  habilidades_de_autoregulacion: int = Field(sa_column=Column(pg.SMALLINT), gt=0, lt=6)
+  habilidades_interpersonales: int = Field(sa_column=Column(pg.SMALLINT), gt=0, lt=6)
+  habilidades_intrapersonales: int = Field(sa_column=Column(pg.SMALLINT), gt=0, lt=6)
+  conducta_riesgo: int = Field(sa_column=Column(pg.SMALLINT), gt=0, lt=6)
+  libros_en_casa: int = Field(sa_column=Column(pg.SMALLINT))
+  internet_en_casa: bool = Field(sa_column=Column(pg.BOOLEAN))
+  distancia_escuela_km: float = Field(sa_column=Column(pg.FLOAT))
+  clima_escolar: int = Field(sa_column=Column(pg.SMALLINT), gt=0, lt=6)
+  capacitacion_docente_anual_horas: int = Field(sa_column=Column(pg.SMALLINT))
   tenencia_director_anos: int = Field(sa_column=Column(pg.INTEGER))
-  adecuaciones_curriculare: int = Field(sa_column=Column(pg.INTEGER))
+  adecuaciones_curriculare: bool = Field(sa_column=Column(pg.BOOLEAN))
   tipo_nea: TipoNEAE = Field(sa_column=Column(pg.ENUM(TipoNEAE)))
-  violencia_familia: int = Field(sa_column=Column(pg.INTEGER))
-  enfermedad_grave_familia: int = Field(sa_column=Column(pg.INTEGER))
-  catastrofe_familia: int = Field(sa_column=Column(pg.INTEGER))
-  resilencia_familia: int = Field(sa_column=Column(pg.INTEGER))
-  conducta_riesgo_observada: int = Field(sa_column=Column(pg.INTEGER))
+  violencia_familia: bool = Field(sa_column=Column(pg.BOOLEAN))
+  enfermedad_grave_familia: bool = Field(sa_column=Column(pg.BOOLEAN))
+  catastrofe_familia: bool = Field(sa_column=Column(pg.BOOLEAN))
+  resilencia_familia: int = Field(sa_column=Column(pg.SMALLINT), gt=0, lt=6)
+  conducta_riesgo_observada: bool = Field(sa_column=Column(pg.BOOLEAN))
     
 class Consult(ConsultBase, table=True):
   id: Optional[UUID] = Field(sa_column=Column(pg.UUID, primary_key=True), default_factory=lambda: uuid4())
@@ -57,25 +54,3 @@ class Consult(ConsultBase, table=True):
 class ConsultCreate(ConsultBase):
   pass
 
-class AbstractErrorResponse(BaseModel, ABC):
-  description: str
-  content_type: str
-  message: str
-
-  @abstractmethod
-  def custom_response() -> dict:
-    pass
-
-class ErrorResponse(AbstractErrorResponse):
-  def custom_response(self) -> dict:
-    return {
-      "description": self.description,
-      "content": {
-        self.content_type: {
-          "example": {
-            "description": self.description,
-            "message": self.message
-          }
-        }
-      }
-    }

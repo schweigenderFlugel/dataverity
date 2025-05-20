@@ -2,7 +2,7 @@ import time
 import logging
 from logging.handlers import RotatingFileHandler
 import os
-from fastapi import Request, Response
+from fastapi import Request
 from starlette.middleware.base import BaseHTTPMiddleware
 
 class RequestLoggerMiddleware(BaseHTTPMiddleware):

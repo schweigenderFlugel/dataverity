@@ -2,16 +2,13 @@ from fastapi import APIRouter, Body, HTTPException
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import select
 from fastapi.responses import StreamingResponse
-from uuid import UUID
-from datetime import datetime
-from enum import Enum
 import io
 import csv
 
-from api.models.consultancy import ConsultBase, Consult, ConsultCreate
-from api.models.response import Response
-from api.db import DatabaseDep
-from api.clerk import AuthDep
+from models.consultancy import ConsultBase, Consult, ConsultCreate
+from models.response import Response
+from db import DatabaseDep
+from clerk import AuthDep
 
 router = APIRouter(
   tags=['Consultancy'],

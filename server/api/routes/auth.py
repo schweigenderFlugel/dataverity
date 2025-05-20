@@ -1,7 +1,6 @@
-from fastapi import APIRouter, Depends, Body, HTTPException
-from api.models.auth import UserBase
-from api.db import DatabaseDep
-from api.clerk import AuthDep
+from fastapi import APIRouter
+from server.api.db import DatabaseDep
+from server.api.clerk import AuthDep
 
 router = APIRouter(
   tags=['Auth'],

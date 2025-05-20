@@ -33,18 +33,13 @@ data_to_send = {
 }
 
 def test_creat_customer(client: TestClient):
-  reponse = client.get(
-    '/consultancy',
-    json={
-      'message': 'User successfully registered' 
-    }
-  )
+  reponse = client.get('/consultancy')
   assert reponse.status_code == status.HTTP_201_CREATED
 
 
 def test_create_item(client: TestClient):
   response = client.post(
-    "/items/",
+    "/consultancy",
     headers={"X-Token": "coneofsilence"},
     json=data_to_send,
   )
@@ -58,7 +53,7 @@ def test_create_item(client: TestClient):
 
 def test_create_item_bad_token(client: TestClient):
   response = client.post(
-    "/items/",
+    "/consultancy",
     headers={"X-Token": "hailhydra"},
     json=data_to_send,
   )
@@ -68,7 +63,7 @@ def test_create_item_bad_token(client: TestClient):
 
 def test_create_existing_item(client: TestClient):
   response = client.post(
-    "/items/",
+    "/consultancy",
     headers={"X-Token": "coneofsilence"},
     json=data_to_send,
   )

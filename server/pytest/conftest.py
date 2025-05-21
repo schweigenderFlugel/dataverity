@@ -5,13 +5,13 @@ from sqlalchemy.pool import StaticPool
 from sqlmodel import SQLModel, Session
 from dotenv import load_dotenv
 import os
-from api.main import app # type: ignore
-from api.db import get_session # type: ignore
+
+from api.main import app
+from api.db import get_session
 
 load_dotenv()
 
 DATABASE_URL = os.getenv('DATABASE_URL')
-engine = create_engine(DATABASE_URL)
 
 engine = create_engine(
     DATABASE_URL,

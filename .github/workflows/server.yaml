@@ -63,7 +63,7 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v5
         with:
           args: >
-            -D sonar.projectKey=${{ secrets.DSONAR_PROJECT_KEY }}
-            -D sonar.organization=${{ secrets.DSONAR_ORG }}
+            -D sonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -D sonar.organization=${{ secrets.SONAR_ORG }}
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

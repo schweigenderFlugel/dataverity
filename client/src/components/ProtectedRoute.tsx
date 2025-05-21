@@ -11,7 +11,7 @@ const ProtectedRoute = () => {
   const { isSignedIn, isLoaded } = useAuth();
 
   if (!isLoaded) return <Loading />;
-  if (isSignedIn) return <Navigate to="/iniciar" />;
+  if (!isSignedIn) return <Navigate to="/home" />;
 
   return <Outlet />;
 };

@@ -55,3 +55,11 @@ def test_create_consult(client: TestClient):
   assert response.json() == {
     'message': 'Consult successfully created!' 
   }
+
+
+def test_update_consult_invalid(client: TestClient):
+  response = client.put(
+    "/consultancy/3867e927-013e-45df-ab86-0b2fe0b93e86",
+    json={'legajo': '12345', 'nombre': 'John Doe'},
+  )
+  assert response.status_code == status.HTTP_404_NOT_FOUND

@@ -6,11 +6,11 @@ from enum import Enum as PyEnum
 from sqlalchemy import Column, SmallInteger, Integer, Boolean, Enum, VARCHAR, TIMESTAMP, Numeric
 import sqlalchemy.dialects.postgresql as pg
 from sqlmodel import SQLModel, Field
+from pydantic import create_model
 
 class Genero(str, PyEnum):
   M = 'M'
   F = 'F'
-  Otro = 'Otro'
 
 class Seccion(str, PyEnum):
   A = 'A'
@@ -64,3 +64,13 @@ class Consult(ConsultBase, table=True):
 class ConsultCreate(ConsultBase):
   pass
 
+optional_fields = {
+  field: (Optional[typ], None)
+  for field, typ in ConsultBase.__annotations__.items()
+}
+
+ConsultUpdate = create_model(
+    "ConsultUpdate",
+    __base__=ConsultBase,
+    **optional_fields
+)

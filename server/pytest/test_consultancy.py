@@ -36,7 +36,7 @@ data_to_send = {
 def test_get_consults(client: TestClient):
   response = client.get('/consultancy')
   assert response.status_code == status.HTTP_200_OK
-  assert response.headers["content-type"] == "text/csv"
+  assert response.headers["content-type"] == "text/csv; charset=utf-8"
   assert response.headers["content-disposition"] == 'attachment; filename=studiantes.csv'
 
 def test_create_consult_invalid(client: TestClient):

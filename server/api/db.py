@@ -15,6 +15,9 @@ def create_db_and_tables(app: FastAPI):
 
 def get_session():
   with Session(engine) as session:
-    yield session
+    try:
+      yield session
+    finally:
+      session.close()
 
 DatabaseDep = Annotated[Session, Depends(get_session)]

@@ -29,7 +29,7 @@ class ConsultBase(SQLModel):
   edad: int = Field(sa_column=Column(SmallInteger), description='Tiene que ser un número entero', gt=4, lt=14)
   genero: Genero = Field(sa_column=Column(Enum(Genero)))
   grado: int = Field(sa_column=Column(SmallInteger), gt=0, lt=7)
-  seccion: Seccion =  Field(sa_column=Column(Enum(Seccion)))
+  seccion: Seccion = Field(sa_column=Column(Enum(Seccion)))
   asistencia_inicial: bool = Field(sa_column=Column(Boolean))
   asistencia: Decimal = Field(sa_column=Column(Numeric(5,2)))
   calificacion_matematica: Decimal = Field(sa_column=Column(Numeric(4,2)), gt=-1, lt=11)
@@ -53,8 +53,10 @@ class ConsultBase(SQLModel):
   catastrofe_familia: bool = Field(sa_column=Column(Boolean))
   resilencia_familia: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
   conducta_riesgo_observada: bool = Field(sa_column=Column(Boolean))
-    
+
 class Consult(ConsultBase, table=True):
+  __tablename__ = "consults"
+
   id: Optional[UUID] = Field(sa_column=Column(pg.UUID, primary_key=True), default_factory=lambda: uuid4())
   created_at: Optional[datetime] = Field(sa_column=Column(TIMESTAMP), default_factory=lambda: datetime.now(timezone.utc))
   updated_at: Optional[datetime] = Field(sa_column=Column(TIMESTAMP), default_factory=lambda: datetime.now(timezone.utc))

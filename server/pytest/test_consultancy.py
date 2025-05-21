@@ -7,6 +7,7 @@ data_to_send = {
   'edad': '10',
   'genero': 'M',
   'grado': '5',
+  'seccion': 'A',
   'asistencia_inicial': True,
   'asistencia': 20, 
   'calificacion_matematica': 7.5,
@@ -17,7 +18,7 @@ data_to_send = {
   'habilidades_interpersonales': 2,
   'habilidades_intrapersonales': 3,
   'conducta_riesgo': 4,
-  'libros_en_casa': 20,
+  'libros_en_casa': False,
   'internet_en_casa': True,
   'distancia_escuela_km': 50.6,
   'clima_escolar': 3,
@@ -33,9 +34,17 @@ data_to_send = {
 }
 
 def test_get_consults(client: TestClient):
-  reponse = client.get('/consultancy')
-  assert reponse.status_code == status.HTTP_200_OK
+  response = client.get('/consultancy')
+  assert response.status_code == status.HTTP_200_OK
+  assert response.headers["content-type"] == "text/csv"
+  assert response.headers["content-disposition"] == 'attachment; filename=studiantes.csv'
 
+def test_create_consult_invalid(client: TestClient):
+  response = client.post(
+    "/consultancy",
+    json={'legajo': '12345', 'nombre': 'John Doe', 'edad': '10'},
+  )
+  assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
 
 def test_create_consult(client: TestClient):
   response = client.post(

@@ -97,12 +97,16 @@ async def update_consult(
 ):
   try:
     consult = session.get(Consult, consult_id)
+    if consult is None:
+      raise HTTPException(status_code=404, detail="Consult not found")
     consult_data_dict = body.model_dump(exclude_unset=True)
     consult.sqlmodel_update(consult_data_dict)
     session.add(consult)
     session.commit()
     session.refresh(consult)
     return { "message": 'Consult successfully updated!' }
+  except HTTPException as http_err:
+    raise http_err
   except Exception as e:
     raise HTTPException(status_code=500, detail=e)
     

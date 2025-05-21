@@ -3,7 +3,7 @@ import { Outlet } from "react-router";
 
 const MainLayout = () => {
   return (
-    <div className="font-poppins bg-(--color-secondary) min-h-screen">
+    <div className="bg-(--color-secondary) min-h-screen">
       <NavBar />
       <Outlet />
     </div>

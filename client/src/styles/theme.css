@@ -5,5 +5,6 @@
   --color-secondary: #F5F5F5;
 
   
-  --font-poppins: Poppins, sans-serif;
+  --font-display: "Poppins", "sans-serif";
+  font-family: "Poppins", "sans-serif";
 }

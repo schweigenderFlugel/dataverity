@@ -104,10 +104,7 @@ async def update_consult(
     session.refresh(consult)
     return { "message": 'Consult successfully updated!' }
   except Exception as e:
-    if isinstance(e, IntegrityError) and "duplicate key value violates unique constraint" in str(e.orig):  # PostgreSQL
-      raise HTTPException(status_code=409, detail="The consult already exists")
-    else:
-      raise HTTPException(status_code=500, detail=e)
+    raise HTTPException(status_code=500, detail=e)
     
 @router.get('', 
   status_code=200, 
@@ -136,17 +133,20 @@ async def list_to_csv(
   # auth: AuthDep,
   session: DatabaseDep,
 ):
-  buffer = io.StringIO()
-  consults = session.exec(select(Consult)).all()
-  keys = list(ConsultBase.model_fields.keys())
-  writer = csv.DictWriter(buffer, fieldnames=keys)
-  writer.writeheader()
-  for c in consults:
-    ignored = {"created_at", "updated_at", "id"}
-    writer.writerow(c.model_dump(exclude=ignored))
-  buffer.seek(0)
-  return StreamingResponse(
-    buffer,
-    media_type="text/csv",
-    headers={"Content-Disposition": "attachment; filename=studiantes.csv"}
-  )
+  try:
+    buffer = io.StringIO()
+    consults = session.exec(select(Consult)).all()
+    keys = list(ConsultBase.model_fields.keys())
+    writer = csv.DictWriter(buffer, fieldnames=keys)
+    writer.writeheader()
+    for c in consults:
+      ignored = {"created_at", "updated_at", "id"}
+      writer.writerow(c.model_dump(exclude=ignored))
+    buffer.seek(0)
+    return StreamingResponse(
+      buffer,
+      media_type="text/csv",
+      headers={"Content-Disposition": "attachment; filename=studiantes.csv"}
+    )
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=e)

@@ -5,15 +5,15 @@ import { useClerk } from "@clerk/clerk-react";
  * @description Este componente es un botón que al hacer clic abre el modal de inicio de sesión de Clerk.
  * @returns {JSX.Element}
  */
-const SignInButton = () => {
+const SignInButton = ({ hero }: { hero?: boolean }) => {
   const clerk = useClerk();
 
   return (
     <button
       onClick={() => clerk.openSignIn({ fallbackRedirectUrl: "/consultoria" })}
-      className="btn-primary"
+      className={"btn-secondary" + (hero ? " border-2 border-white" : "")}
     >
-      Inicia gratis
+      {hero ? "Inicia ahora" : "Inicia gratis"}
     </button>
   );
 };

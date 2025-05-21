@@ -10,7 +10,7 @@ const SignOutButton = () => {
   return (
     <button
       onClick={() => signOut({ redirectUrl: "/home" })}
-      className="btn-primary"
+      className="btn-secondary"
     >
       Cerrar sesión
     </button>

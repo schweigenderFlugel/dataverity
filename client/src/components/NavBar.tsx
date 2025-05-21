@@ -43,7 +43,7 @@ const NavBar = () => {
               <NavLink
                 key={item.name}
                 to={item.href}
-                className="text-sm/6 font-semibold text-(--color-primary) hover:text-(--color-primary-dark)"
+                className="text-sm/6 font-bold text-(--color-primary) hover:text-(--color-primary-dark)"
               >
                 {item.name}
               </NavLink>
@@ -92,7 +92,7 @@ const NavBar = () => {
                   <NavLink
                     key={item.name}
                     to={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-(--color-primary) hover:bg-(--color-primary-light)"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-bold text-(--color-primary) hover:bg-(--color-primary-light)"
                   >
                     {item.name}
                   </NavLink>

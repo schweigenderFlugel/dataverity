@@ -32,10 +32,11 @@ async def home(auth: AuthDep):
   return { "message": "Hallo Welto" }
 
 if __name__ == "__main__":
+  environment = os.getenv("ENVIRONMENT")
   uvicorn.run(
     "main:app",
     host="0.0.0.0",
     port=3000,
-    reload=True,
+    reload=(environment == "development"),
     use_colors=True
   )

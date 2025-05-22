@@ -8,6 +8,8 @@ from clerk_backend_api.jwks_helpers import AuthenticateRequestOptions, RequestSt
 load_dotenv()
 
 CLERK_SECRET_KEY = os.getenv('CLERK_SECRET_KEY')
+BACKEND_URL = os.getenv('BACKEND_URL')
+FRONTEND_URL = os.getenv('FRONTEND_URL')
 
 FRONTEND_URL = os.getenv('FRONTEND_URL')
 

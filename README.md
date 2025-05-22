@@ -3,19 +3,20 @@
   <h4>======== Hackathon Express N°4 -Readme-Mayo-2025 ========</h4>
 </div>
 
-<!-- Título del proyecto con enlace al sitio web -->
-<h1 align="center" style="color: #007bff; font-size: 3rem;"> 
-  <a href="https://iupi-fintech-nine.vercel.app/auth">· Dataverity </a> ·
-</h1>
-
-<!-- Espaciador visual para mantener la estructura -->
-<div align="center"></div>
-
-<!-- HEADER: Imagen de portada representativa -->
-<div align="center" width="100">
-  <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/8a1f394b1fa038c180d4a45697bbdf4ebbaeef2f/img/Recurso%202%404x-100.jpg"
-  alt="header"/>
+<!-- Encabezado centrado con logotipo e hipervínculo al login de Dataverity -->
+<div align="center">
+  <table>
+    <tr>
+      <td>
+        <!-- Logotipo del proyecto -->
+        <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/d0e8ebd5c1b3a8394509f1e85f862bb9e6cc6702/img/Recurso%205%400.5x.png" width="80">
+      </td>
+      <td>
+        <!-- Título con enlace al sistema de autenticación -->
+        <h1 align="center" style="color: #007bff; font-size: 3rem;"> 
+          <a href="https://iupi-fintech-nine.vercel.app/auth">· Dataverity </a> ·
+        </h1>
+      </td>
+    </tr>
+  </table>
 </div>
-
-<!-- Subtítulo con una breve descripción del proyecto -->
-<h2 align="center" style="color: #007bff;">-Inteligencia Artificial para la Educación, Datos que Impulsan el Aprendizaje </h2>

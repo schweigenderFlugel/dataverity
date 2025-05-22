@@ -20,3 +20,19 @@
     </tr>
   </table>
 </div>
+
+
+
+<!-- Subtítulo con una breve descripción del proyecto -->
+<h2 align="center" style="color: #007bff; font-family: 'Arial', sans-serif; font-weight: 600; font-size: 24px;">
+ Reporte y Consultoría AI
+</h2>
+
+<!-- Espaciador visual para mantener la estructura -->
+<div align="center"></div>
+
+<!-- HEADER: Imagen de portada representativa -->
+<div align="center" width="100">
+  <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/3059f6c604e4d92dd6ace057d12030ca098d61de/exelente-portada.png"
+  alt="header"/>
+</div>

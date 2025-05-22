@@ -13,4 +13,4 @@ RUN addgroup -g 1234 dataverity-group && \
 
 USER dataverity-user:dataverity-group
 
-CMD ["export", "ENVIRONMENT=production", "&&", "python", "main.py"]
+CMD ["python", "main.py"]

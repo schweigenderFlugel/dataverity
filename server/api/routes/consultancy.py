@@ -6,7 +6,7 @@ from uuid import UUID
 import io
 import csv
 
-from models.consultancy import ConsultBase, Consult, ConsultCreate, ConsultUpdate
+from models.students import StudentsBase, Students, StudentCreate, StudentUpdate, StudentsResponse
 from models.response import Response
 from db import DatabaseDep
 from clerk import AuthDep
@@ -43,14 +43,14 @@ router = APIRouter(
       message="Unexpected internal server error"
     ).custom_response(),
   },
-  )
+)
 async def create_consult(
   # auth: AuthDep,
   session: DatabaseDep,
-  body: ConsultCreate = Body(),
+  body: StudentCreate = Body(),
 ):
   try:
-    consult = Consult.model_validate(body.model_dump())
+    consult = Students.model_validate(body.model_dump())
     session.add(consult)
     session.commit()
     session.refresh(consult)
@@ -90,13 +90,13 @@ async def create_consult(
   },
   )
 async def update_consult(
-  # auth: AuthDep,
+  auth: AuthDep,
   session: DatabaseDep,
   consult_id: UUID,
-  body: ConsultUpdate, # type: ignore
+  body: StudentUpdate, # type: ignore
 ):
   try:
-    consult = session.get(Consult, consult_id)
+    consult = session.get(Students, consult_id)
     if consult is None:
       raise HTTPException(status_code=404, detail="Consult not found")
     consult_data_dict = body.model_dump(exclude_unset=True)
@@ -139,12 +139,12 @@ async def list_to_csv(
 ):
   try:
     buffer = io.StringIO()
-    consults = session.exec(select(Consult)).all()
-    keys = list(ConsultBase.model_fields.keys())
+    consults = session.exec(select(Students)).all()
+    keys = list(StudentsResponse.model_fields.keys())
     writer = csv.DictWriter(buffer, fieldnames=keys)
     writer.writeheader()
     for c in consults:
-      ignored = {"created_at", "updated_at", "id"}
+      ignored = {"created_at", "updated_at"}
       writer.writerow(c.model_dump(exclude=ignored))
     buffer.seek(0)
     return StreamingResponse(

@@ -21,16 +21,6 @@ engine = create_engine(
     poolclass=StaticPool,
 )
 
-def fake_protected_route(request):
-  return RequestState(
-    is_signed_in=True,
-    session=Session(user_id="test-user-id", session_id="fake-session-id", status="active"),
-    user=None
-  )
-
-# Sobrescribimos la dependencia real
-app.dependency_overrides[protected_route] = fake_protected_route
-
 @pytest.fixture(name='session')
 def session_fixture():
   SQLModel.metadata.create_all(engine)
@@ -42,10 +32,14 @@ def session_fixture():
 def client_fixture(session: Session):
   def get_session_override():
     return session
-  def override_get_current_user():
-    return {"id": "test-user-id", "email": "test@example.com"}
+  def fake_protected_route():
+    return RequestState(
+      is_signed_in=True,
+      session=Session(user_id="test-user-id", session_id="fake-session-id", status="active"),
+      user=None
+    )
   app.dependency_overrides[get_session] = get_session_override
-  app.dependency_overrides[protected_route] = override_get_current_user
+  app.dependency_overrides[protected_route] = fake_protected_route
 
   client = TestClient(app)
   yield client

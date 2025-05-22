@@ -5,9 +5,8 @@ from dotenv import load_dotenv
 import os
 
 # from middlewares.logger import RequestLoggerMiddleware
-from routes import consultancy
+from routes import consultancy, auth
 from db import create_db_and_tables
-from clerk import AuthDep
 
 load_dotenv()
 
@@ -26,10 +25,7 @@ app.add_middleware(
 
 # app.add_middleware(RequestLoggerMiddleware)
 app.include_router(consultancy.router)
-
-@app.get('/')
-async def home(auth: AuthDep):
-  return { "message": "Hallo Welto" }
+app.include_router(auth.router)
 
 if __name__ == "__main__":
   environment = os.getenv("ENVIRONMENT")

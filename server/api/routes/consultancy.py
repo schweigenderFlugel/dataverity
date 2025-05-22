@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Body, HTTPException
-from sqlalchemy.exc import IntegrityError, OperationalError
+from sqlalchemy.exc import IntegrityError
 from sqlmodel import select
 from fastapi.responses import StreamingResponse
 from uuid import UUID
@@ -45,7 +45,7 @@ router = APIRouter(
   },
 )
 async def create_consult(
-  # auth: AuthDep,
+  auth: AuthDep,
   session: DatabaseDep,
   body: StudentCreate = Body(),
 ):
@@ -134,7 +134,7 @@ async def update_consult(
   },
 )
 async def list_to_csv(
-  # auth: AuthDep,
+  auth: AuthDep,
   session: DatabaseDep,
 ):
   try:

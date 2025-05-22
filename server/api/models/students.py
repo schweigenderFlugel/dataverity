@@ -1,8 +1,8 @@
-from datetime import datetime, timezone
 from typing import Optional
+from datetime import datetime, timezone
 from decimal import Decimal
 from enum import Enum as PyEnum
-from sqlalchemy import Column, SmallInteger, Integer, Boolean, Enum, VARCHAR, TIMESTAMP, Numeric
+from sqlalchemy import Column, SmallInteger, Integer, Boolean, Enum, VARCHAR, Numeric, TIMESTAMP
 from sqlmodel import SQLModel, Field
 from pydantic import create_model
 
@@ -20,6 +20,10 @@ class TipoNEAE(str, PyEnum):
   TEA = 'TEA'
   Dislexia = 'Dislexia'
   Normal = 'Normal'
+
+class CreateUpdateDate(SQLModel):
+  created_at: Optional[datetime] = Field(sa_column=Column(TIMESTAMP), default_factory=lambda: datetime.now(timezone.utc))
+  updated_at: Optional[datetime] = Field(sa_column=Column(TIMESTAMP), default_factory=lambda: datetime.now(timezone.utc))
 
 class StudentsBase(SQLModel):
   legajo: str = Field(sa_column=Column(VARCHAR, unique=True))
@@ -52,14 +56,11 @@ class StudentsBase(SQLModel):
   resilencia_familiar: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
   conducta_riesgo_observada: bool = Field(sa_column=Column(Boolean))
 
-class CreateUpdateDate(SQLModel):
-  created_at: Optional[datetime] = Field(sa_column=Column(TIMESTAMP), default_factory=lambda: datetime.now(timezone.utc))
-  updated_at: Optional[datetime] = Field(sa_column=Column(TIMESTAMP), default_factory=lambda: datetime.now(timezone.utc))
-
 class StudentIdModel(SQLModel):
   id_estudiante: Optional[int] = Field(default=None, primary_key=True, lt=541)
   
 class Students(CreateUpdateDate, StudentsBase, StudentIdModel, table=True):
+  __tablename__ = 'students'
   pass
 
 class StudentsResponse(StudentsBase, StudentIdModel):

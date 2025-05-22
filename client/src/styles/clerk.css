@@ -1,0 +1,9 @@
+/* Clerk CSS */
+.cl-internal-1odp14a {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.cl-internal-1odp14a:hover {
+  background-color: var(--color-primary-dark);
+}

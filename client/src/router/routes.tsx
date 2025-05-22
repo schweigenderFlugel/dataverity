@@ -1,33 +1,33 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes, Navigate } from "react-router";
+import MainLayout from "@/layouts/MainLayout";
 import HomePage from "@pages/HomePage";
 import ProtectedRoute from "@/components/ProtectedRoute";
-import ConsultancyPage from "@/pages/ConsultancyPage";
+import StudentsPage from "@/pages/StudentsPage";
 import ReportingPage from "@/pages/ReportingPage";
-import { useEffect } from "react";
-import { useNavigate } from "react-router";
-import { useUser } from "@clerk/clerk-react";
+import LoadingPage from "@/pages/LoadingPage";
+import NotFoundPage from "@/pages/NotFoundPage";
+import { useAuth } from "@clerk/clerk-react";
 
 /**
  * Componente de rutas de la aplicación.
  */
 const AppRoutes = () => {
-  const { isSignedIn } = useUser();
-  const navigate = useNavigate();
+  const { isLoaded } = useAuth();
 
-  useEffect(() => {
-    if (isSignedIn) {
-      navigate("/", { replace: true });
-    }
-  }, [isSignedIn, navigate]);
+  if (!isLoaded) return <LoadingPage />;
 
   return (
     <Routes>
-      <Route element={<ProtectedRoute />}>
-        <Route path="/" element={<ConsultancyPage />} />
-        <Route path="reporte" element={<ReportingPage />} />
+      <Route path="/" element={<MainLayout />}>
+        <Route element={<ProtectedRoute />}>
+          {/* Redirección automática al loguearse */}
+          <Route index element={<Navigate to="/estudiantes" replace />} />
+          <Route path="estudiantes" element={<StudentsPage />} />
+          <Route path="reportes" element={<ReportingPage />} />
+        </Route>
+        <Route path="home" element={<HomePage />} />
       </Route>
-      <Route path="home" element={<HomePage />} />
-      <Route path="*" element={<HomePage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };

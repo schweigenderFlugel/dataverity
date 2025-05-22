@@ -2,14 +2,10 @@ import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "@assets/dataverity-logo.svg";
-import { useClerk } from "@clerk/clerk-react";
-
-const navigation = [
-  { name: "Soluciones", href: "#" },
-  { name: "Producto", href: "#" },
-  { name: "Precios", href: "#" },
-  { name: "Nosotros", href: "#" },
-];
+import SignOutButton from "./SignOutButton";
+import SignInButton from "./SignInButton";
+import { useUser } from "@clerk/clerk-react";
+import { NavLink } from "react-router";
 
 /**
  * Componente de barra de navegación.
@@ -17,8 +13,19 @@ const navigation = [
  */
 const NavBar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isSignedIn } = useUser();
 
-  const clerk = useClerk();
+  const navigation = isSignedIn
+    ? [
+        { name: "Estudiantes", href: "/estudiantes" },
+        { name: "Reportes", href: "/reportes" },
+      ]
+    : [
+        { name: "Soluciones", href: "#" },
+        { name: "Producto", href: "#" },
+        { name: "Precios", href: "#" },
+        { name: "Nosotros", href: "#" },
+      ];
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
@@ -33,13 +40,13 @@ const NavBar = () => {
           </a>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a
+              <NavLink
                 key={item.name}
-                href={item.href}
-                className="text-sm/6 font-semibold text-(--color-primary) hover:text-(--color-primary-dark)"
+                to={item.href}
+                className="text-sm/6 font-bold text-(--color-primary) hover:text-(--color-primary-dark)"
               >
                 {item.name}
-              </a>
+              </NavLink>
             ))}
           </div>
         </div>
@@ -54,9 +61,7 @@ const NavBar = () => {
           </button>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <button onClick={() => clerk.openSignIn({})} className="btn-primary">
-            Inicia gratis
-          </button>
+          {isSignedIn ? <SignOutButton /> : <SignInButton />}
         </div>
       </nav>
       <Dialog
@@ -84,22 +89,17 @@ const NavBar = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
-                  <a
+                  <NavLink
                     key={item.name}
-                    href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-(--color-primary) hover:bg-(--color-primary-light)"
+                    to={item.href}
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-bold text-(--color-primary) hover:bg-(--color-primary-light)"
                   >
                     {item.name}
-                  </a>
+                  </NavLink>
                 ))}
               </div>
               <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                >
-                  Inicia gratis
-                </a>
+                {isSignedIn ? <SignOutButton /> : <SignInButton />}
               </div>
             </div>
           </div>

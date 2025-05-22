@@ -186,7 +186,7 @@
       </a>
     </td>
 
-    <td></td>
+  <td></td>
   </tr>
 
   <!-- Fila 2: presentación de otros dos integrantes del equipo -->
@@ -207,7 +207,7 @@
       </a>
     </td>
 
-    <td></td>
+  <td></td>
 
     <!-- Integrante: Usuario 5 (nombre personalizado pendiente) -->
    <td align="center">
@@ -223,6 +223,6 @@
       </a>
     </td>
 
-    <td></td>
+  <td></td>
   </tr>
 </table>

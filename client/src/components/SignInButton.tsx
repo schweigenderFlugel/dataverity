@@ -10,7 +10,7 @@ const SignInButton = ({ hero }: { hero?: boolean }) => {
 
   return (
     <button
-      onClick={() => clerk.openSignIn({ fallbackRedirectUrl: "/consultoria" })}
+      onClick={() => clerk.openSignIn({ fallbackRedirectUrl: "/estudiantes" })}
       className={"btn-secondary" + (hero ? " border-2 border-white" : "")}
     >
       {hero ? "Inicia ahora" : "Inicia gratis"}

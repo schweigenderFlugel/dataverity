@@ -67,3 +67,61 @@
     <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/a82c6cef8a8c383d6ce8c2f022089ffc0205e058/img/Recurso%205%400.5x.png" width="200"/>
   </p>
 </div>
+
+
+
+
+
+
+
+
+
+
+<!-- Título principal del proyecto: nombre de la plataforma -->
+<h1 align="center" style="color: #007bff; font-size: 36px; font-weight: bold;">
+  DATAVERITY
+</h1>
+
+<!-- Subtítulo con propuesta de valor: enfoque en inteligencia artificial aplicada a la educación -->
+<h2 align="center" style="color: #333; font-size: 24px; font-weight: 600;">
+  La Educación del Futuro No Puede Esperar: IA Para Decisiones Académicas Inteligentes
+</h2>
+
+<!-- Párrafo introductorio: descripción del problema educativo y presentación de Dataverity como solución transformadora -->
+<p align="center" style="font-size: 18px; color: #555;">
+  Cada estudiante es único. Cada institución tiene desafíos diferentes. Pero todas comparten una misma necesidad: entender el rendimiento académico más allá de simples números. 
+  <strong>Dataverity</strong> es la herramienta que transforma datos en estrategias reales, revolucionando el aprendizaje.
+</p>
+
+<!-- Línea divisoria para separación visual entre la introducción y el contenido temático -->
+<hr style="border: 1px solid #007bff; width: 80%;">
+
+<!-- Sección del problema detectado en el sistema educativo actual -->
+<h2 style="color: #007bff;">🔎 El Problema Que Nadie Puede Ignorar</h2>
+<p style="font-size: 16px; color: #444;">
+  ¿Cuántas veces se han tomado decisiones en educación basadas en suposiciones? ¿Cuántos estudiantes han quedado atrás porque el sistema no entiende lo que realmente necesitan? 
+  Hoy, los datos existen, pero sin un análisis profundo, son solo cifras. <strong>Dataverity</strong> convierte esos datos en conocimiento útil, brindando a instituciones y docentes 
+  herramientas precisas para mejorar el aprendizaje.
+</p>
+
+<!-- Sección de la solución propuesta por la plataforma -->
+<h2 style="color: #007bff;">🚀 Nuestra Solución</h2>
+<ul style="font-size: 16px; color: #444;">
+  <li><strong>Análisis predictivo:</strong> - Web App que genera un análisis de los datos de una encuesta para descubrir los factores que afectan el rendimiento estudiantil.</li>
+  <li><strong>Recomendaciones personalizadas:</strong> - Dashboard personalizado de reportería sobre los análisis realizados en los datos.</li>
+  <li><strong>Resultados accionables:</strong> - Inteligencia artificial que va a proporcionar las recomendaciones específicas para los estudiantes.</li>
+</ul>
+
+<!-- Sección de argumentos para confiar en la solución propuesta -->
+<h2 style="color: #007bff;">💡 ¿Por Qué confiar en Dataverity?</h2>
+<p style="font-size: 16px; color: #444;">
+  Porque la educación ya no puede depender de intuiciones. Cada decisión académica debe estar respaldada por datos y si podemos predecir tendencias en economía y tecnología, ¿Por qué no hacerlo también en el aprendizaje?
+</p>
+
+<!-- Sección final con llamado a la acción para involucrarse con la plataforma -->
+<h2 style="color: #007bff;">🎯 Únete a la Revolución Educativa</h2>
+<p style="font-size: 16px; color: #444;">
+  🚀 Dataverity no es solo una herramienta, es el cambio que la educación necesita.  
+  La inteligencia artificial puede hacer que el aprendizaje evolucione. ¿Estamos listos para dejar atrás los métodos obsoletos y adoptar la educación del futuro? 
+  La respuesta está en los datos, y Dataverity los convierte en soluciones reales.
+</p>

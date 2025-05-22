@@ -1,10 +1,13 @@
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 from datetime import datetime, timezone
 from decimal import Decimal
 from enum import Enum as PyEnum
 from sqlalchemy import Column, SmallInteger, Integer, Boolean, Enum, VARCHAR, Numeric, TIMESTAMP
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel, Field, Relationship
 from pydantic import create_model
+
+if TYPE_CHECKING:
+  from .users import Users
 
 class Genero(str, PyEnum):
   M = 'M'
@@ -61,7 +64,8 @@ class StudentIdModel(SQLModel):
   
 class Students(CreateUpdateDate, StudentsBase, StudentIdModel, table=True):
   __tablename__ = 'students'
-  pass
+  user_id: str = Field(foreign_key="users.id")
+  user: Optional["Users"] = Relationship(back_populates="students")
 
 class StudentsResponse(StudentsBase, StudentIdModel):
   pass

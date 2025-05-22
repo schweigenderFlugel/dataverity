@@ -7,6 +7,7 @@ import io
 import csv
 
 from models.students import Students, StudentCreate, StudentUpdate, StudentsResponse
+from models.users import Users
 from models.response import Response
 from db import DatabaseDep
 from clerk import AuthDep
@@ -23,9 +24,9 @@ router = APIRouter(
   summary='Create a new consult',
   responses={
     201: Response(
-      description='Consult successfully created',
+      description='Student successfully created',
       content_type='application/json',
-      message='Consult successfully created!',
+      message='Student successfully created!',
     ).custom_response(),
     401: Response(
       description='The user is not authenticated', 
@@ -33,9 +34,9 @@ router = APIRouter(
       message="Not authenticated"
     ).custom_response(),
     409: Response(
-      description='The consult already exists', 
+      description='The Student already exists', 
       content_type='application/json',
-      message="The consult already exists"
+      message="The student already exists"
     ).custom_response(),
     500: Response(
       description='Unexpected error has ocurred', 
@@ -44,7 +45,7 @@ router = APIRouter(
     ).custom_response(),
   },
 )
-async def create_consult(
+async def create_student(
   auth: AuthDep,
   session: DatabaseDep,
   body: StudentCreate = Body(),
@@ -54,10 +55,10 @@ async def create_consult(
     session.add(consult)
     session.commit()
     session.refresh(consult)
-    return { "message": 'Consult successfully created!' }
+    return { "message": 'Student successfully created!' }
   except Exception as e:
     if isinstance(e, IntegrityError) and "duplicate key value violates unique constraint" in str(e.orig):  # PostgreSQL
-      raise HTTPException(status_code=409, detail="The consult already exists")
+      raise HTTPException(status_code=409, detail="The Student already exists")
     else:
       raise HTTPException(status_code=500, detail=e)
     
@@ -68,9 +69,9 @@ async def create_consult(
   summary='Create a new consult',
   responses={
     201: Response(
-      description='Consult successfully udpated',
+      description='Student successfully udpated',
       content_type='application/json',
-      message='Consult successfully updated!',
+      message='Student successfully updated!',
     ).custom_response(),
     401: Response(
       description='The user is not authenticated', 
@@ -89,7 +90,7 @@ async def create_consult(
     ).custom_response(),
   },
   )
-async def update_consult(
+async def update_student(
   auth: AuthDep,
   session: DatabaseDep,
   consult_id: UUID,
@@ -104,12 +105,12 @@ async def update_consult(
     session.add(consult)
     session.commit()
     session.refresh(consult)
-    return { "message": 'Consult successfully updated!' }
+    return { "message": 'Student successfully updated!' }
   except HTTPException as http_err:
     raise http_err
   except Exception as e:
     raise HTTPException(status_code=500, detail=e)
-    
+  
 @router.get('', 
   status_code=200, 
   tags=['Consultancy'], 
@@ -117,7 +118,7 @@ async def update_consult(
   response_class=StreamingResponse,
   responses={
     200: Response(
-      description='Consult successfully created',
+      description='Get a list of students',
       content_type='application/json',
       message='Consult successfully created!',
     ).custom_response(),
@@ -133,7 +134,37 @@ async def update_consult(
     ).custom_response(),
   },
 )
-async def list_to_csv(
+async def get_students_list(
+  auth: AuthDep,
+  session: DatabaseDep,
+):
+  try:
+    user_id = auth.payload['sub']
+    user_found = session.exec(select(Users).where(Users.user_id == user_id)).first()
+    consults = session.exec(select(Students).where(Students.user_id == user_found.id)).all()
+    return consults
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=e)
+    
+@router.get('', 
+  status_code=200, 
+  tags=['Consultancy'], 
+  summary='Consultancy',
+  response_class=StreamingResponse,
+  responses={
+    401: Response(
+      description='The user is not authenticated', 
+      content_type='application/json',
+      message="Not authenticated"
+    ).custom_response(),
+    500: Response(
+      description='Unexpected error has ocurred', 
+      content_type='application/json',
+      message="Unexpected internal server error"
+    ).custom_response(),
+  },
+)
+async def students_list_to_csv(
   auth: AuthDep,
   session: DatabaseDep,
 ):

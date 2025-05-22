@@ -3,11 +3,13 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.pool import StaticPool
 from sqlmodel import SQLModel, Session
+from clerk_backend_api.jwks_helpers import RequestState
 from dotenv import load_dotenv
 import os
 
 from api.main import app
 from api.db import get_session
+from api.clerk import protected_route
 
 load_dotenv()
 
@@ -31,6 +33,7 @@ def client_fixture(session: Session):
   def get_session_override():
     return session
   app.dependency_overrides[get_session] = get_session_override
+
   client = TestClient(app)
   yield client
   app.dependency_overrides.clear()

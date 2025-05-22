@@ -1,0 +1,37 @@
+@layer components {
+  .btn-primary {
+    border-radius: calc(infinity * 1px);
+    background-color: var(--color-primary);
+    padding-inline: --spacing(4);
+    padding-block: --spacing(2);
+    font-family: var(--font-display);
+    font-size: small;
+    font-weight: bold;
+    color: var(--color-white);
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-primary-dark);
+      }
+    }
+  }
+
+  .btn-secondary {
+    border-radius: calc(infinity * 1px);
+    background-color: var(--color-black);
+    padding-inline: --spacing(4);
+    padding-block: --spacing(2);
+    font-family: var(--font-display);
+    font-size: small;
+    font-weight: bold;
+    color: var(--color-white);
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-primary-dark);
+      }
+    }
+  }
+}

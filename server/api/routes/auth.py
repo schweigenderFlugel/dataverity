@@ -12,4 +12,4 @@ async def login(
   auth: AuthDep,
   session: DatabaseDep
 ):
-  print(auth.credentials)
+  print(auth)

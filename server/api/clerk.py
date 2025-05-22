@@ -1,27 +1,30 @@
 from typing import Annotated
-from fastapi import Request, HTTPException, Depends
-from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from fastapi import Request, Depends, HTTPException, status
 from clerk_backend_api import Clerk
 from dotenv import load_dotenv
 import os
+from clerk_backend_api.jwks_helpers import AuthenticateRequestOptions, RequestState
 
 load_dotenv()
-CLERK_SECRET_KEY = os.getenv('CLERK_SECRET_KEY')
 
-clerk = Clerk(bearer_auth=CLERK_SECRET_KEY)
+CLERK_SECRET_KEY = os.getenv('CLERK_SECRET_KEY')
+BACKEND_URL = os.getenv('BACKEND_URL')
+FRONTEND_URL = os.getenv('FRONTEND_URL')
 
 def protected_route(request: Request):
-  auth_header = request.headers.get("Authorization")
-  if not auth_header or not auth_header.startswith("Bearer "):
-    raise HTTPException(status_code=401, detail="Missing or invalid Authorization header")
-    
-  client_token = auth_header.split(" ")[1]
-    
-  try:
-    client = clerk.authenticate_request(headers={"Authorization": f"Bearer {client_token}"})
-    if not client or not client.is_signed_in:
-      raise HTTPException(status_code=401, detail="Invalid session")
-  except Exception as e:
-    raise HTTPException(status_code=401, detail=str(e))
+  clerk = Clerk(bearer_auth=CLERK_SECRET_KEY)
+  request_state = clerk.authenticate_request(
+    request,
+    AuthenticateRequestOptions(
+      authorized_parties=[FRONTEND_URL]
+    )
+  )
 
-AuthDep = Annotated[HTTPAuthorizationCredentials, Depends(protected_route)]
+  if not request_state.is_signed_in:
+    raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Missing or invalid Authorization header")
+
+  token = request_state
+
+  return request_state
+
+AuthDep = Annotated[RequestState, Depends(protected_route)]

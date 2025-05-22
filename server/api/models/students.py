@@ -1,10 +1,8 @@
 from datetime import datetime, timezone
 from typing import Optional
 from decimal import Decimal
-from uuid import UUID, uuid4
 from enum import Enum as PyEnum
 from sqlalchemy import Column, SmallInteger, Integer, Boolean, Enum, VARCHAR, TIMESTAMP, Numeric
-import sqlalchemy.dialects.postgresql as pg
 from sqlmodel import SQLModel, Field
 from pydantic import create_model
 
@@ -23,7 +21,7 @@ class TipoNEAE(str, PyEnum):
   Dislexia = 'Dislexia'
   Normal = 'Normal'
 
-class ConsultBase(SQLModel):
+class StudentsBase(SQLModel):
   legajo: str = Field(sa_column=Column(VARCHAR, unique=True))
   nombre: str = Field(sa_column=Column(VARCHAR(30)), description='Tiene que ser nombre completo')
   edad: int = Field(sa_column=Column(SmallInteger), description='Tiene que ser un número entero', gt=4, lt=14)
@@ -47,30 +45,36 @@ class ConsultBase(SQLModel):
   capacitacion_docente_anual_horas: int = Field(sa_column=Column(SmallInteger))
   tenencia_director_anos: int = Field(sa_column=Column(Integer))
   adecuaciones_curriculares: bool = Field(sa_column=Column(Boolean))
-  tipo_nea: TipoNEAE = Field(sa_column=Column(Enum(TipoNEAE)))
-  violencia_familia: bool = Field(sa_column=Column(Boolean))
-  enfermedad_grave_familia: bool = Field(sa_column=Column(Boolean))
-  catastrofe_familia: bool = Field(sa_column=Column(Boolean))
-  resilencia_familia: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
+  tipo_neae: TipoNEAE = Field(sa_column=Column(Enum(TipoNEAE)))
+  violencia_familiar: bool = Field(sa_column=Column(Boolean))
+  enfermedad_grave_familiar: bool = Field(sa_column=Column(Boolean))
+  catastrofe_familiar: bool = Field(sa_column=Column(Boolean))
+  resilencia_familiar: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
   conducta_riesgo_observada: bool = Field(sa_column=Column(Boolean))
 
-class Consult(ConsultBase, table=True):
-  __tablename__ = "consults"
-
-  id: Optional[UUID] = Field(sa_column=Column(pg.UUID, primary_key=True), default_factory=lambda: uuid4())
+class CreateUpdateDate(SQLModel):
   created_at: Optional[datetime] = Field(sa_column=Column(TIMESTAMP), default_factory=lambda: datetime.now(timezone.utc))
   updated_at: Optional[datetime] = Field(sa_column=Column(TIMESTAMP), default_factory=lambda: datetime.now(timezone.utc))
 
-class ConsultCreate(ConsultBase):
+class StudentIdModel(SQLModel):
+  id_estudiante: Optional[int] = Field(default=None, primary_key=True, lt=541)
+  
+class Students(CreateUpdateDate, StudentsBase, StudentIdModel, table=True):
+  pass
+
+class StudentsResponse(StudentsBase, StudentIdModel):
+  pass
+
+class StudentCreate(StudentsBase):
   pass
 
 optional_fields = {
   field: (Optional[typ], None)
-  for field, typ in ConsultBase.__annotations__.items()
+  for field, typ in StudentsBase.__annotations__.items()
 }
 
-ConsultUpdate = create_model(
-    "ConsultUpdate",
-    __base__=ConsultBase,
+StudentUpdate = create_model(
+    "StudentUpdate",
+    __base__=StudentsBase,
     **optional_fields
 )

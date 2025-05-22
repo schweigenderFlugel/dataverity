@@ -1,15 +1,29 @@
-from fastapi import APIRouter
-from server.api.db import DatabaseDep
-from server.api.clerk import AuthDep
+from fastapi import APIRouter, HTTPException
+from db import DatabaseDep
+from clerk import AuthDep
+from sqlmodel import select
+
+from models.users import Users
 
 router = APIRouter(
   tags=['Auth'],
   prefix='/auth',
 )
 
-@router.post('/')
+@router.get('/')
 async def login(
   auth: AuthDep,
-  session: DatabaseDep
+  session: DatabaseDep,
 ):
-  print(auth)
+  try:
+    user_id = auth.payload['sub']
+    registered = session.exec(select(Users).where(Users.user_id == user_id)).first()
+    if registered: return { "message": "Successfully signed in" }
+    else:
+      user = Users(user_id=user_id)
+      session.add(user)
+      session.commit()
+      session.refresh(user)
+      return { "message": "Successfully registered" }
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=e)

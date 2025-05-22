@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Body, HTTPException
-from sqlalchemy.exc import IntegrityError, OperationalError
+from sqlalchemy.exc import IntegrityError
 from sqlmodel import select
 from fastapi.responses import StreamingResponse
 from uuid import UUID

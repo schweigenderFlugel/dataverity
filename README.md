@@ -36,3 +36,34 @@
   <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/3059f6c604e4d92dd6ace057d12030ca098d61de/exelente-portada.png"
   alt="header"/>
 </div>
+
+
+
+
+
+
+
+<!-- Espaciador adicional para mantener la estructura limpia -->
+<div align="center">
+<br />
+</div>
+
+<!-- Sección de enlaces destacados y recursos visuales -->
+<div align="center">
+  <br />
+  <a href="https://drive.google.com/drive/folders/1-dWnkU2_lItQym67uMMjzyHib0sHOiKL"><strong>Explore the docs »</strong></a>
+  <br /><br />
+  <a href="https://www.youtube.com/watch?v=yIr_1CasXkM&t=2933s">Demo Video</a> · 
+  <a href="https://iupi-fintech-nine.vercel.app/auth">Deploy</a> · 
+  <a href="https://drive.google.com/drive/folders/1-dWnkU2_lItQym67uMMjzyHib0sHOiKL">Demo Day</a>
+</div>
+
+<!-- Imagen destacada o representativa del proyecto -->
+<div align="center">
+  <p style="color: #007bff; font-weight: bold; font-size: 24px;">
+    
+  </p>
+  <p align="center">
+    <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/a82c6cef8a8c383d6ce8c2f022089ffc0205e058/img/Recurso%205%400.5x.png" width="200"/>
+  </p>
+</div>

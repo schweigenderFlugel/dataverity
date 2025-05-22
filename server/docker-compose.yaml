@@ -20,7 +20,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
 
   app:
-    image: schweigenderflugel/dataverity:0.2.1
+    image: schweigenderflugel/dataverity:0.2.2
     container_name: dataverity-app
     hostname: localhost
     depends_on: 

@@ -125,3 +125,104 @@
   La inteligencia artificial puede hacer que el aprendizaje evolucione. ¿Estamos listos para dejar atrás los métodos obsoletos y adoptar la educación del futuro? 
   La respuesta está en los datos, y Dataverity los convierte en soluciones reales.
 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Tabla centrada que presenta al equipo de desarrollo con enlaces a sus perfiles profesionales -->
+<table align="center">
+  
+  <!-- Fila 1: presentación de los tres primeros integrantes del equipo -->
+  <tr>
+    <td></td>
+    
+    <!-- Integrante: Facundo Castro -->
+  <td align="center">
+      <a href="https://github.com/alexmarinmendez">
+        <img src="https://images.weserv.nl/?url=github.com/schweigenderFlugel.png&h=100&w=100&fit=cover&mask=circle" width="100" />
+      </a><br/>
+      <strong>Facundo Castro</strong><br/>
+      <a href="https://github.com/schweigenderFlugel">
+        <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
+      </a>
+      <a href="https://www.linkedin.com/in/facundo-castro-87b864234">
+        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+      </a>
+    </td>
+
+    <!-- Integrante: Jhonatan Remon -->
+  <td align="center">
+      <a href="https://github.com/schweigenderFlugel">
+        <img src="https://images.weserv.nl/?url=github.com/Jhone-fori-freelancer.png&h=100&w=100&fit=cover&mask=circle" width="100" />
+      </a><br/>
+      <strong>Jhonatan Remon</strong><br/>
+      <a href="https://www.linkedin.com/in/jhonatanremon/">
+        <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
+      </a>
+      <a href="https://github.com/Jhone-fori-freelancer">
+        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+      </a>
+    </td>
+
+    <!-- Integrante: Nicolas Enciso -->
+  <td align="center">
+      <a href="https://github.com/nicoenciso">
+        <img src="https://images.weserv.nl/?url=github.com/nicoenciso.png&h=100&w=100&fit=cover&mask=circle" width="100" />
+      </a><br/>
+      <strong>Nicolas Enciso</strong><br/>
+      <a href="https://www.linkedin.com/in/nicolasenciso/">
+        <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
+      </a>
+      <a href="https://www.linkedin.com/in/lautaro-duran/">
+        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+      </a>
+    </td>
+
+    <td></td>
+  </tr>
+
+  <!-- Fila 2: presentación de otros dos integrantes del equipo -->
+  <tr>
+    <td></td>
+
+    <!-- Integrante: Raúl Díaz -->
+  <td align="center">
+      <a href="https://github.com/usuario4">
+        <img src="https://images.weserv.nl/?url=github.com/Raul-DC.png&h=100&w=100&fit=cover&mask=circle" width="100" />
+      </a><br/>
+      <strong>Raúl Díaz</strong><br/>
+      <a href="https://github.com/usuario4">
+        <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
+      </a>
+      <a href="https://www.linkedin.com/in/usuario4/">
+        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+      </a>
+    </td>
+
+    <td></td>
+
+    <!-- Integrante: Usuario 5 (nombre personalizado pendiente) -->
+   <td align="center">
+      <a href="https://github.com/usuario5">
+        <img src="https://images.weserv.nl/?url=github.com/usuario5.png&h=100&w=100&fit=cover&mask=circle" width="100" />
+      </a><br/>
+      <strong>Usuario 5</strong><br/>
+      <a href="https://github.com/usuario5">
+        <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
+      </a>
+      <a href="https://www.linkedin.com/in/usuario5/">
+        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+      </a>
+    </td>
+
+    <td></td>
+  </tr>
+</table>

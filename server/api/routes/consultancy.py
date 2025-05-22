@@ -6,7 +6,7 @@ from uuid import UUID
 import io
 import csv
 
-from models.students import StudentsBase, Students, StudentCreate, StudentUpdate, StudentsResponse
+from models.students import Students, StudentCreate, StudentUpdate, StudentsResponse
 from models.response import Response
 from db import DatabaseDep
 from clerk import AuthDep

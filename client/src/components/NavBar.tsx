@@ -17,7 +17,7 @@ const NavBar = () => {
 
   const navigation = isSignedIn
     ? [
-        { name: "Consultas", href: "/consultoria" },
+        { name: "Estudiantes", href: "/estudiantes" },
         { name: "Reportes", href: "/reportes" },
       ]
     : [

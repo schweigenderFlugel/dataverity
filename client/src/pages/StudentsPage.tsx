@@ -2,11 +2,11 @@ import Header from "@/components/Header";
 import StudentsTable from "@/components/StudentsTable";
 
 /**
- * Pagina de consultoría
- * @description Esta página es la que se muestra al usuario cuando inicia sesión. Aquí se pueden mostrar los datos del usuario y otras funcionalidades.
+ * Pagina de estudiantes
+ * @description Esta página es la que se muestra al usuario cuando inicia sesión.
  * @returns {JSX.Element}
  */
-const ConsultancyPage = () => {
+const StudentsPage = () => {
   return (
     <div className="flex flex-col justify-center items-center h-screen overflow-x-hidden pt-20 px-5">
       <Header
@@ -24,4 +24,4 @@ const ConsultancyPage = () => {
   );
 };
 
-export default ConsultancyPage;
+export default StudentsPage;

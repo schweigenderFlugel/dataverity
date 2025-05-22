@@ -3,7 +3,6 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.pool import StaticPool
 from sqlmodel import SQLModel, Session
-from clerk_backend_api.jwks_helpers import RequestState
 from dotenv import load_dotenv
 import os
 

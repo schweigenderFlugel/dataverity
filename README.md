@@ -138,12 +138,16 @@
 
 
 <!-- Tabla centrada que presenta al equipo de desarrollo con enlaces a sus perfiles profesionales -->
+
 <table align="center">
-  <!-- Fila 1: presentación de los tres primeros integrantes del equipo -->
+  
+<!-- Fila 1: presentación de los tres primeros integrantes del equipo -->
+
   <tr>
     <td></td>
 
-    <!-- Integrante: Facundo Castro -->
+<!-- Integrante: Facundo Castro -->
+
   <td align="center">
       <a href="https://github.com/alexmarinmendez">
         <img src="https://images.weserv.nl/?url=github.com/schweigenderFlugel.png&h=100&w=100&fit=cover&mask=circle" width="100" />
@@ -157,7 +161,8 @@
       </a>
     </td>
 
-    <!-- Integrante: Jhonatan Remon -->
+  <!-- Integrante: Jhonatan Remon -->
+  
   <td align="center">
       <a href="https://github.com/schweigenderFlugel">
         <img src="https://images.weserv.nl/?url=github.com/Jhone-fori-freelancer.png&h=100&w=100&fit=cover&mask=circle" width="100" />
@@ -171,7 +176,8 @@
       </a>
     </td>
 
-    <!-- Integrante: Nicolas Enciso -->
+  <!-- Integrante: Nicolas Enciso -->
+  
   <td align="center">
       <a href="https://github.com/nicoenciso">
         <img src="https://images.weserv.nl/?url=github.com/nicoenciso.png&h=100&w=100&fit=cover&mask=circle" width="100" />
@@ -192,16 +198,16 @@
   <tr>
     <td></td>
 
-    <!-- Integrante: Raúl Díaz -->
+  <!-- Integrante: Raúl Díaz -->
   <td align="center">
-      <a href="https://github.com/usuario4">
+      <a href="https://github.com/Raul-DC">
         <img src="https://images.weserv.nl/?url=github.com/Raul-DC.png&h=100&w=100&fit=cover&mask=circle" width="100" />
       </a><br/>
       <strong>Raúl Díaz</strong><br/>
       <a href="https://github.com/usuario4">
         <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
       </a>
-      <a href="https://www.linkedin.com/in/usuario4/">
+      <a href="https://www.linkedin.com/in/raul-dc/">
         <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
       </a>
     </td>

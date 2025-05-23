@@ -117,6 +117,7 @@
 
 
 
+
 <!-- Título principal del proyecto: nombre de la plataforma -->
 <h1 align="center" style="color: #007bff; font-size: 36px; font-weight: bold;">
   DATAVERITY
@@ -273,3 +274,55 @@
 
 
     
+
+
+
+<!-- Sección: Tecnologías utilizadas en el backend -->
+
+<h2 align="center">Tecnologías Utilizadas - frontend</h2>
+
+<!-- Contenedor centrado con ajuste automático de línea para los badges -->
+
+<div align="center" style="max-width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px;">
+  <!-- TypeScript --> <img src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat&logo=typescript&logoColor=white" alt="TypeScript">
+  <!-- NestJS --> <img src="https://img.shields.io/badge/-NestJS-E0234E?style=flat&logo=nestjs&logoColor=white" alt="NestJS">
+  <!-- Prisma --> <img src="https://img.shields.io/badge/-Prisma-2D3748?style=flat&logo=prisma&logoColor=white" alt="Prisma">
+  <!-- PostgreSQL --> <img src="https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL">
+  <!-- Redis --> <img src="https://img.shields.io/badge/-Redis-DC382D?style=flat&logo=redis&logoColor=white" alt="Redis">
+  <!-- Swagger --> <img src="https://img.shields.io/badge/-Swagger-85EA2D?style=flat&logo=swagger&logoColor=white" alt="Swagger">
+  <!-- Docker --> <img src="https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker">
+  <!-- AWS --> <img src="https://img.shields.io/badge/-AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white" alt="AWS">
+  <!-- Render --> <img src="https://img.shields.io/badge/-Render-46E3B7?style=flat&logo=render&logoColor=white" alt="Render">
+  <!-- SendGrid --> <img src="https://img.shields.io/badge/-SendGrid-0080FF?style=flat&logo=sendgrid&logoColor=white" alt="SendGrid">
+  <!-- Mailtrap --> <img src="https://img.shields.io/badge/-Mailtrap-000000?style=flat&logo=mailtrap&logoColor=white" alt="Mailtrap">
+  <!-- Cloudinary --> <img src="https://img.shields.io/badge/-Cloudinary-FAB005?style=flat&logo=cloudinary&logoColor=white" alt="Cloudinary">
+  <!-- AWS S3 --> <img src="https://img.shields.io/badge/-AWS%20S3-569A31?style=flat&logo=amazonaws&logoColor=white" alt="AWS S3">
+  <!-- GitHub Actions --> <img src="https://img.shields.io/badge/-GitHub%20Actions-2088FF?style=flat&logo=github-actions&logoColor=white" alt="GitHub Actions">
+
+</div>
+
+
+
+
+
+
+
+<!-- Sección: Tecnologías utilizadas en el frontend -->
+<h2 align="center">Tecnologías Utilizadas - frontend</h2>
+
+<!-- Contenedor centrado con ajuste automático de línea para los badges -->
+<div align="center" style="max-width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px;">
+  <!-- HTML5 --> <img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
+  <!-- CSS3 --> <img src="https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
+  <!-- JavaScript --> <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript">
+  <!-- TypeScript --> <img src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat&logo=typescript&logoColor=white" alt="TypeScript">
+  <!-- React --> <img src="https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black" alt="React">
+  <!-- Tailwind CSS --> <img src="https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  <!-- Figma --> <img src="https://img.shields.io/badge/-Figma-F24E1E?style=flat&logo=figma&logoColor=white" alt="Figma">
+  <!-- Vite --> <img src="https://img.shields.io/badge/-Vite-646CFF?style=flat&logo=vite&logoColor=white" alt="Vite">
+  <!-- Node.js --> <img src="https://img.shields.io/badge/-Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" alt="Node.js">
+  <!-- npm --> <img src="https://img.shields.io/badge/-npm-CB3837?style=flat&logo=npm&logoColor=white" alt="npm">
+  <!-- Vercel --> <img src="https://img.shields.io/badge/-Vercel-000000?style=flat&logo=vercel&logoColor=white" alt="Vercel">
+
+  
+</div>

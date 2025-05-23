@@ -277,6 +277,72 @@
 
 
 
+<!-- Sección: Tecnologías utilizadas en análisis de datos -->
+
+<h2 align="center">Tecnologías Utilizadas - Data Analyst</h2>
+
+<!-- Contenedor centrado con ajuste automático de línea para los badges -->
+
+<div align="center" style="max-width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px;">
+  <!-- Python --> <img src="https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
+  <!-- Pandas --> <img src="https://img.shields.io/badge/-Pandas-150458?style=flat&logo=pandas&logoColor=white" alt="Pandas">
+  <!-- NumPy --> <img src="https://img.shields.io/badge/-NumPy-013243?style=flat&logo=numpy&logoColor=white" alt="NumPy">
+  <!-- Matplotlib --> <img src="https://img.shields.io/badge/-Matplotlib-11557C?style=flat&logo=matplotlib&logoColor=white" alt="Matplotlib">
+  <!-- Seaborn --> <img src="https://img.shields.io/badge/-Seaborn-0099CC?style=flat&logo=seaborn&logoColor=white" alt="Seaborn">
+  <!-- SQL --> <img src="https://img.shields.io/badge/-SQL-4479A1?style=flat&logo=sqlite&logoColor=white" alt="SQL">
+  <!-- Excel --> <img src="https://img.shields.io/badge/-Excel-217346?style=flat&logo=microsoftexcel&logoColor=white" alt="Excel">
+  <!-- Power BI --> <img src="https://img.shields.io/badge/-Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black" alt="Power BI">
+  <!-- Tableau --> <img src="https://img.shields.io/badge/-Tableau-E97627?style=flat&logo=tableau&logoColor=white" alt="Tableau">
+  <!-- Google Data Studio --> <img src="https://img.shields.io/badge/-Looker%20Studio-4285F4?style=flat&logo=looker&logoColor=white" alt="Google Looker Studio">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Sección: Tecnologías utilizadas en el backend -->
 
 <h2 align="center">Tecnologías Utilizadas - Backend</h2>

@@ -1,8 +1,10 @@
 from fastapi import APIRouter, Body, HTTPException
+from pathlib import Path
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import select
 from fastapi.responses import StreamingResponse
 from uuid import UUID
+
 import io
 import csv
 
@@ -11,6 +13,7 @@ from models.users import Users
 from models.response import Response
 from db import DatabaseDep, CacheDep
 from clerk import AuthDep
+from data.generate_recommendations import generate_all_recommendations
 
 router = APIRouter(
   tags=['Consultancy'],
@@ -193,3 +196,10 @@ async def students_list_to_csv(
     )
   except Exception:
     raise HTTPException(status_code=500, detail='Error inesperado!')
+
+@router.get()
+async def get_recommendations():
+  base_url = Path(__file__).resolve(strict=True).parent
+  path = (base_url / ".." / "data" / "simulacion_estudiantes.csv").resolve()  
+  output_dir = (base_url / ".." / "outputs").resolve()
+  return generate_all_recommendations(path, output_dir)

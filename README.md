@@ -43,7 +43,7 @@
   <br />
   <!-- 📄 Enlace a la documentación de Data Engineer -->
   <a href="https://github.com/schweigenderFlugel/dataverity/blob/3f0ae2fc48980f07a13404b879ad87aa787c7dc8/data/README.md">
-    <strong>documentacion Data Engineer »</strong>
+    <strong>Doc Data Engineer »</strong>
   </a>
   
   <br /><br />

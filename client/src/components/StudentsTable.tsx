@@ -1,67 +1,67 @@
 const students = [
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
   {
     name: "John Doe",
-    grade: "3°",
+    grade: "3° A",
     id: "67543817873",
   },
 ];
@@ -81,7 +81,7 @@ const StudentsTable = () => {
               Nombre
             </th>
             <th scope="col" className="px-6 py-3">
-              Grado
+              Curso
             </th>
             <th scope="col" className="px-6 py-3">
               ID

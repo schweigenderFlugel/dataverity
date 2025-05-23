@@ -1,0 +1,31 @@
+export interface StudentForm {
+  legajo: string;
+  nombre: string;
+  edad: number;
+  genero: "M" | "F";
+  grado: number;
+  seccion: "A" | "B" | "C";
+  asistencia_inicial: boolean;
+  asistencia: number;
+  calificacion_matematica: number;
+  calificacion_lengua: number;
+  horas_clase_semanales: number;
+  motivacion: number;
+  habilidades_de_autorregulacion: number;
+  habilidades_interpersonales: number;
+  habilidades_intrapersonales: number;
+  conducta_riesgo: number;
+  libros_en_casa: boolean;
+  internet_en_casa: boolean;
+  distancia_escuela_km: number;
+  clima_escolar: number;
+  capacitacion_docente_anual_horas: number;
+  tenencia_director_anos: number;
+  adecuaciones_curriculares: boolean;
+  tipo_neae: 'TDAH' | 'TEA' | 'Dislexia' | 'Normal';
+  violencia_familiar: boolean;
+  enfermedad_grave_familiar: boolean;
+  catastrofe_familiar: boolean;
+  resiliencia_familiar: number;
+  conducta_riesgo_observada: boolean;
+}

@@ -7,6 +7,7 @@ import {
 } from "@/services/students.services";
 import { useAuth } from "@clerk/clerk-react";
 import { createContext, useState, type ReactNode } from "react";
+import { toast } from "react-toastify";
 
 interface StudentsContextType {
   students: StudentForm[] | [];
@@ -24,34 +25,51 @@ export const StudentsProvider = ({ children }: { children: ReactNode }) => {
   const { getToken } = useAuth();
 
   // Función auxiliar para obtener el token y ejecutar una acción
-  const withToken = async (action: (token: string) => void) => {
+  const withToken = async (action: (token: string) => Promise<void> | void) => {
     const token = await getToken();
     if (!token) {
-      console.error("No se pudo obtener el token");
+      toast.error("No se pudo obtener el token");
       return;
     }
-    action(token);
+    await action(token);
   };
 
   const fetchStudents = () => {
-    withToken((token) => {
-      register(token).then(() => {
-        getStudentsList(token).then((students) => {
-          setStudents(students);
-        });
-      });
+    withToken(async (token) => {
+      try {
+        await register(token);
+        const students = await getStudentsList(token);
+        setStudents(students);
+      } catch (error) {
+        toast.error("Error al obtener la lista de estudiantes");
+        console.log(error);
+      }
     });
   };
 
   const submitCreateStudent = (data: StudentForm) => {
-    withToken((token) => {
-      createStudent(data, token);
+    withToken(async (token) => {
+      try {
+        await createStudent(data, token);
+        toast.success("Estudiante creado correctamente");
+        fetchStudents(); // Aquí se actualiza la lista
+      } catch (error) {
+        toast.error("Error al crear el estudiante");
+        console.log(error);
+      }
     });
   };
 
   const submitUpdateStudent = (data: StudentForm) => {
-    withToken((token) => {
-      updateStudent(data, token);
+    withToken(async (token) => {
+      try {
+        await updateStudent(data, token);
+        toast.success("Estudiante editado correctamente");
+        fetchStudents(); // Aquí también se actualiza la lista
+      } catch (error) {
+        toast.error("Error al editar el estudiante");
+        console.log(error);
+      }
     });
   };
 

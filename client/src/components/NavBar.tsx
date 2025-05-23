@@ -19,9 +19,10 @@ const NavBar = () => {
     ? [
         { name: "Estudiantes", href: "/estudiantes" },
         { name: "Reportes", href: "/reportes" },
+        { name: "Servicios", href: "/servicios" },
       ]
     : [
-        { name: "Soluciones", href: "#" },
+        { name: "Servicios", href: "/servicios" },
         { name: "Producto", href: "#" },
         { name: "Precios", href: "#" },
         { name: "Nosotros", href: "#" },

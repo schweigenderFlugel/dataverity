@@ -13,7 +13,7 @@ const StudentsTable = () => {
   const [selectedStudent, setSelectedStudent] = useState<
     StudentForm | undefined
   >(undefined);
-  const { students, submitUpdateStudent } = useStudentsContext();
+  const { students, submitUpdateStudent, loading } = useStudentsContext();
 
   // Nuevo: abrir el modal solo cuando selectedStudent cambia
   useEffect(() => {
@@ -47,31 +47,45 @@ const StudentsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {students.map((student, index) => (
-            <tr
-              key={index}
-              className="bg-white border border-(--color-primary)"
-            >
-              <th
-                scope="row"
-                className="px-6 py-4 font-bold text-black whitespace-nowrap"
-              >
-                {student.nombre}
-              </th>
-              <td className="px-6 py-4">{`${student.grado}° ${student.seccion}`}</td>
-              <td className="px-6 py-4 text-(--color-primary-dark)">
-                {student.legajo}
-              </td>
-              <td className="px-6 py-4">
-                <button
-                  onClick={() => setSelectedStudent(student)}
-                  className="font-medium text-(--color-primary) hover:underline"
-                >
-                  Editar
-                </button>
+          {loading ? (
+            <tr>
+              <td colSpan={4} className="text-center py-8">
+                Cargando...
               </td>
             </tr>
-          ))}
+          ) : students.length === 0 ? (
+            <tr>
+              <td colSpan={4} className="text-center py-8">
+                No hay estudiantes.
+              </td>
+            </tr>
+          ) : (
+            students.map((student, index) => (
+              <tr
+                key={index}
+                className="bg-white border border-(--color-primary)"
+              >
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-bold text-black whitespace-nowrap"
+                >
+                  {student.nombre}
+                </th>
+                <td className="px-6 py-4">{`${student.grado}° ${student.seccion}`}</td>
+                <td className="px-6 py-4 text-(--color-primary-dark)">
+                  {student.legajo}
+                </td>
+                <td className="px-6 py-4">
+                  <button
+                    onClick={() => setSelectedStudent(student)}
+                    className="font-medium text-(--color-primary) hover:underline"
+                  >
+                    Editar
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
       <StudentModal

@@ -14,6 +14,7 @@ interface StudentsContextType {
   fetchStudents: () => void;
   submitCreateStudent: (data: StudentForm) => void;
   submitUpdateStudent: (data: StudentForm) => void;
+  loading: boolean; // <-- Agrega loading aquí
 }
 
 const StudentsContext = createContext<StudentsContextType | undefined>(
@@ -22,6 +23,7 @@ const StudentsContext = createContext<StudentsContextType | undefined>(
 
 export const StudentsProvider = ({ children }: { children: ReactNode }) => {
   const [students, setStudents] = useState<StudentForm[] | []>([]);
+  const [loading, setLoading] = useState<boolean>(false); // <-- Estado loading
   const { getToken } = useAuth();
 
   // Función auxiliar para obtener el token y ejecutar una acción
@@ -35,6 +37,7 @@ export const StudentsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const fetchStudents = () => {
+    setLoading(true); // <-- Empieza loading
     withToken(async (token) => {
       try {
         await register(token);
@@ -43,6 +46,8 @@ export const StudentsProvider = ({ children }: { children: ReactNode }) => {
       } catch (error) {
         toast.error("Error al obtener la lista de estudiantes");
         console.log(error);
+      } finally {
+        setLoading(false); // <-- Termina loading
       }
     });
   };
@@ -85,6 +90,7 @@ export const StudentsProvider = ({ children }: { children: ReactNode }) => {
         fetchStudents,
         submitCreateStudent,
         submitUpdateStudent,
+        loading, // <-- Expón loading
       }}
     >
       {children}

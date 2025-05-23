@@ -334,7 +334,7 @@
 
 <br><br>
 <div align="center">
-  <img src="https://github.com/schweigenderFlugel/dataverity/blob/7ccc4276caca94d930fdb3a3fe358f86d93a24c7/PM/img/frontend-svg.svg" alt="Tecnologías utilizadas - Data Engineer" width="100%">
+  <img src="https://github.com/schweigenderFlugel/dataverity/blob/cff4bfedfa74fe035086811cc508c3b1dfcd24ac/PM/img/backend-svg.svg" alt="Tecnologías utilizadas - Data Engineer" width="100%">
 </div>
 <br><br>
 
@@ -363,7 +363,7 @@
 
 <br><br>
 <div align="center">
-  <img src="https://github.com/schweigenderFlugel/dataverity/blob/edd6bf3e2636b4a9762930435b885d506739e936/PM/img/Data%20Engineer-tecnologias-utilizadas-2.svg" alt="Tecnologías utilizadas - Data Engineer" width="100%">
+  <img src="https://github.com/schweigenderFlugel/dataverity/blob/7ccc4276caca94d930fdb3a3fe358f86d93a24c7/PM/img/frontend-svg.svg" alt="Tecnologías utilizadas - Data Engineer" width="100%">
 </div>
 <br><br>
 
@@ -400,7 +400,7 @@
 
 <br><br>
 <div align="center">
-  <img src="https://github.com/schweigenderFlugel/dataverity/blob/edd6bf3e2636b4a9762930435b885d506739e936/PM/img/Data%20Engineer-tecnologias-utilizadas-2.svg" alt="Tecnologías utilizadas - Data Engineer" width="100%">
+  <img src="https://github.com/schweigenderFlugel/dataverity/blob/cff4bfedfa74fe035086811cc508c3b1dfcd24ac/PM/img/project%20manager-svg.svg" alt="Tecnologías utilizadas - Project Manager" width="100%">
 </div>
 <br><br>
 

@@ -281,7 +281,7 @@
 
 <!-- Sección: Tecnologías utilizadas en Data Engineer -->
 
-<h2 align="center">Tecnologías Utilizadas - Data Engineer</h2>
+<h2 align="center">Tecnologías Utilizadas </h2>
 
 <br><br>
 <div align="center">
@@ -330,7 +330,13 @@
 
 <!-- Sección: Tecnologías utilizadas en el backend -->
 
-<h2 align="center">Tecnologías Utilizadas - Backend</h2>
+<h2 align="center">Tecnologías Utilizadas</h2>
+
+<br><br>
+<div align="center">
+  <img src="https://github.com/schweigenderFlugel/dataverity/blob/edd6bf3e2636b4a9762930435b885d506739e936/PM/img/Data%20Engineer-tecnologias-utilizadas-2.svg" alt="Tecnologías utilizadas - Data Engineer" width="100%">
+</div>
+<br><br>
 
 <!-- Contenedor centrado con ajuste automático de línea para los badges -->
 <div align="center" style="max-width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px;">
@@ -353,7 +359,13 @@
 
 
 <!-- Sección: Tecnologías utilizadas en el frontend -->
-<h2 align="center">Tecnologías Utilizadas - Frontend</h2>
+<h2 align="center">Tecnologías Utilizadas</h2>
+
+<br><br>
+<div align="center">
+  <img src="https://github.com/schweigenderFlugel/dataverity/blob/edd6bf3e2636b4a9762930435b885d506739e936/PM/img/Data%20Engineer-tecnologias-utilizadas-2.svg" alt="Tecnologías utilizadas - Data Engineer" width="100%">
+</div>
+<br><br>
 
 <!-- Contenedor centrado con ajuste automático de línea para los badges -->
 <div align="center" style="max-width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px;">
@@ -384,7 +396,13 @@
 
 
 <!-- Sección: Tecnologías utilizadas en Project Manager -->
-<h2 align="center">Tecnologías Utilizadas - Project Manager</h2>
+<h2 align="center">Tecnologías Utilizadas</h2>
+
+<br><br>
+<div align="center">
+  <img src="https://github.com/schweigenderFlugel/dataverity/blob/edd6bf3e2636b4a9762930435b885d506739e936/PM/img/Data%20Engineer-tecnologias-utilizadas-2.svg" alt="Tecnologías utilizadas - Data Engineer" width="100%">
+</div>
+<br><br>
 
 <!-- Contenedor centrado con ajuste automático de línea para los badges -->
 <div align="center" style="max-width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px;">

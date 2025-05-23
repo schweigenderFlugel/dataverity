@@ -4,7 +4,7 @@ import type { StudentForm } from "@/interfaces/student-form";
 const createStudent = async (data: StudentForm, token: string) => {
   try {
     const response = await ApiInstance.post(
-      `${import.meta.env.VITE_API_URL}/api/consultancy`,
+      "/consultancy",
       data,
       {
         headers: {

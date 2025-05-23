@@ -210,8 +210,22 @@ async def students_list_to_csv(
     raise HTTPException(status_code=500, detail='Error inesperado!')
 
 @router.get()
-async def get_recommendations():
+async def get_recommendations(
+  auth: AuthDep,
+  session: DatabaseDep,
+):
+  buffer = io.StringIO()
+  user_id = auth.payload['sub']
+  user_found = session.exec(select(Users).where(Users.user_id == user_id)).first()
+  consults = session.exec(select(Students).where(Students.user_id == user_found.id)).all()
+  keys = list(StudentsResponse.model_fields.keys())
+  writer = csv.DictWriter(buffer, fieldnames=keys)
+  writer.writeheader()
+  for c in consults:
+    ignored = {"created_at", "updated_at", 'user_id', 'user'}
+    writer.writerow(c.model_dump(exclude=ignored))
+  buffer.seek(0)
   base_url = Path(__file__).resolve(strict=True).parent
   path = (base_url / ".." / "data" / "simulacion_estudiantes.csv").resolve()  
   output_dir = (base_url / ".." / "outputs").resolve()
-  return generate_all_recommendations(path, output_dir)
+  return generate_all_recommendations(buffer, output_dir)

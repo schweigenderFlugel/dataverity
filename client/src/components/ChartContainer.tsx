@@ -1,6 +1,7 @@
 import type { Reports } from "@/interfaces/reports";
 import { getStudentsListToCsv } from "@/services/students.services";
 import { useAuth } from "@clerk/clerk-react";
+import { useEffect, useState } from "react";
 
 /**
  * Componente contenedor para el gráfico.
@@ -9,6 +10,37 @@ import { useAuth } from "@clerk/clerk-react";
  */
 const ChartContainer = ({ reports }: { reports: Reports[] }) => {
   const { getToken } = useAuth();
+
+  // Nuevo estado para el texto tipeado por cada reporte
+  const [typedRecommendations, setTypedRecommendations] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Reinicia el efecto cuando cambian los reports
+    if (reports.length === 0) {
+      setTypedRecommendations([]);
+      return;
+    }
+
+    let isCancelled = false;
+    const typeAll = async () => {
+      const newTyped: string[] = [];
+      for (let i = 0; i < reports.length; i++) {
+        const recs = reports[i].recomendaciones.split("|").join("\n");
+        let current = "";
+        for (let j = 0; j < recs.length; j++) {
+          if (isCancelled) return;
+          current += recs[j];
+          newTyped[i] = current;
+          setTypedRecommendations([...newTyped]);
+          await new Promise((res) => setTimeout(res, 15)); // velocidad de tipeo
+        }
+        newTyped[i] = recs;
+        setTypedRecommendations([...newTyped]);
+      }
+    };
+    typeAll();
+    return () => { isCancelled = true; };
+  }, [reports]);
 
   const downloadCsv = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -20,6 +52,7 @@ const ChartContainer = ({ reports }: { reports: Reports[] }) => {
       getStudentsListToCsv(token)
     });
   }
+
   return (
     <div className="w-full max-w-4xl mx-10 bg-white border border-(--color-primary) rounded-lg my-6 overflow-y-scroll">
       <button
@@ -49,11 +82,10 @@ const ChartContainer = ({ reports }: { reports: Reports[] }) => {
               <p className="font-bold text-2xl">{report.nombre}</p>
               <p className="font-bold text-[16px]">{report.grado}° {report.seccion}</p>
               <div className="font-bold text-[16px]">Recomendaciones:</div>
-              <ul>
-              {report.recomendaciones.split("|").map((recommendation, index) => (
-                <li key={index}>{recommendation}</li>
-              ))}
-              </ul>
+              <pre className="whitespace-pre-wrap text-[15px]">
+                {typedRecommendations[index] ?? ""}
+                {typedRecommendations[index]?.length !== report.recomendaciones.split("|").join("\n").length && <span className="animate-pulse">|</span>}
+              </pre>
             </div>
           ))}
         </div>

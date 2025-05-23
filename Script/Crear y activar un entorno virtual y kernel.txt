@@ -1,0 +1,5 @@
+cd 'C:\Users\User\Desktop\Data Analytics\Python\ACAPI'
+
+acapi\Scripts\activate        # Activa el entorno
+
+cd 'C:\Users\User\Desktop\NoCountry\proyectoexpress4\Script'

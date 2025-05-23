@@ -1,0 +1,7 @@
+asistencia = 2 decimales
+
+calificacion_lengua = 1 decimal
+
+calificacion_matematica = 1 decimal
+
+distancia_escuela_km = 1 y 2 decimales

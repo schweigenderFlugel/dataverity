@@ -207,14 +207,14 @@
     <!-- Integrante: Raúl Díaz -->
     
   <td align="center">
-      <a href="https://github.com/usuario4">
+      <a href="https://github.com/Raul-DC">
         <img src="https://images.weserv.nl/?url=github.com/Raul-DC.png&h=100&w=100&fit=cover&mask=circle" width="100" />
       </a><br/>
       <strong>Raúl Díaz</strong><br/>
-      <a href="https://github.com/usuario4">
+      <a href="">
         <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
       </a>
-      <a href="https://www.linkedin.com/in/usuario4/">
+      <a href="https://www.linkedin.com/in/raul-dc/">
         <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
       </a>
     </td>

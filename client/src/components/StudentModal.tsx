@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Description,
   Dialog,
@@ -33,6 +33,10 @@ const StudentModal: React.FC<Props> = ({
   const [formData, setFormData] = useState<StudentForm>(
     initialData ?? defaultStudentData
   );
+
+  useEffect(() => {
+    setFormData(initialData ?? defaultStudentData);
+  }, [initialData, isOpen]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>

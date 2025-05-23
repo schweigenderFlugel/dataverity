@@ -77,6 +77,46 @@
 
 
 
+<!-- Sección de presentación en video del proyecto -->
+<div align="center" style="margin-top: 20px;">
+  <h2>🎥 Presentación del Proyecto</h2>
+  <p>Vista Previa del Proyecto</p>
+
+  <!-- Imagen/GIF que muestra una vista previa del video -->
+  <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/63400d2517ce5145ea0792b1f7febb33d53ce5d9/ezgif.com-optimize.gif"
+       alt="Vista Previa del Video"
+       style="max-width: 100%; border-radius: 10px;">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Título principal del proyecto: nombre de la plataforma -->
 <h1 align="center" style="color: #007bff; font-size: 36px; font-weight: bold;">
   DATAVERITY

@@ -7,13 +7,12 @@ import {
 } from "@headlessui/react";
 import { defaultStudentData } from "@/utils/default-student-data";
 import type { StudentForm } from "@/interfaces/student-form";
-import { toast } from "react-toastify";
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
   initialData?: StudentForm;
-  onSubmit: ((data: StudentForm) => void);
+  onSubmit: (data: StudentForm) => void;
 }
 
 /**
@@ -22,8 +21,8 @@ interface Props {
  * @param {isOpen} - Indica si el modal está abierto o cerrado.
  * @param {onClose} - Función que se ejecuta al cerrar el modal.
  * @param {initialData} - Datos iniciales del estudiante (opcional).
- * @param {onSubmit} - Función que se ejecuta al enviar el formulario. 
- * @returns 
+ * @param {onSubmit} - Función que se ejecuta al enviar el formulario.
+ * @returns
  */
 const StudentModal: React.FC<Props> = ({
   isOpen,
@@ -51,18 +50,8 @@ const StudentModal: React.FC<Props> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      onSubmit(formData);
-      toast.success(
-        initialData
-          ? "Estudiante editado correctamente"
-          : "Estudiante creado correctamente"
-      );
-      onClose();
-    } catch (error) {
-      toast.error("Ocurrió un error al guardar el estudiante");
-      console.error("Error al guardar el estudiante:", error);
-    }
+    onSubmit(formData);
+    onClose();
   };
 
   return (
@@ -226,7 +215,9 @@ const StudentModal: React.FC<Props> = ({
 
             {/* Calificación Matemática */}
             <div className="mb-6 col-span-1">
-              <label className="font-semibold">Calificación en Matemática</label>
+              <label className="font-semibold">
+                Calificación en Matemática
+              </label>
               <p className="text-xs text-(--color-primary) mb-1">
                 Nota obtenida en Matemática (0 a 10).
               </p>
@@ -282,7 +273,9 @@ const StudentModal: React.FC<Props> = ({
             {/* Motivación */}
             <div className="mb-6 col-span-1">
               <label className="font-semibold">Motivación</label>
-              <p className="text-xs text-(--color-primary) mb-1">Nivel de motivación (1 a 5).</p>
+              <p className="text-xs text-(--color-primary) mb-1">
+                Nivel de motivación (1 a 5).
+              </p>
               <input
                 name="motivacion"
                 type="number"
@@ -298,8 +291,12 @@ const StudentModal: React.FC<Props> = ({
 
             {/* Habilidades de autorregulación */}
             <div className="mb-6 col-span-1">
-              <label className="font-semibold">Habilidades de autorregulación</label>
-              <p className="text-xs text-(--color-primary) mb-1">Nivel de autorregulación (1 a 5).</p>
+              <label className="font-semibold">
+                Habilidades de autorregulación
+              </label>
+              <p className="text-xs text-(--color-primary) mb-1">
+                Nivel de autorregulación (1 a 5).
+              </p>
               <input
                 name="habilidades_de_autorregulacion"
                 type="number"
@@ -315,8 +312,12 @@ const StudentModal: React.FC<Props> = ({
 
             {/* Habilidades interpersonales */}
             <div className="mb-6 col-span-1">
-              <label className="font-semibold">Habilidades interpersonales</label>
-              <p className="text-xs text-(--color-primary) mb-1">Nivel de habilidades interpersonales (1 a 5).</p>
+              <label className="font-semibold">
+                Habilidades interpersonales
+              </label>
+              <p className="text-xs text-(--color-primary) mb-1">
+                Nivel de habilidades interpersonales (1 a 5).
+              </p>
               <input
                 name="habilidades_interpersonales"
                 type="number"
@@ -332,8 +333,12 @@ const StudentModal: React.FC<Props> = ({
 
             {/* Habilidades intrapersonales */}
             <div className="mb-6 col-span-1">
-              <label className="font-semibold">Habilidades intrapersonales</label>
-              <p className="text-xs text-(--color-primary) mb-1">Nivel de habilidades intrapersonales (1 a 5).</p>
+              <label className="font-semibold">
+                Habilidades intrapersonales
+              </label>
+              <p className="text-xs text-(--color-primary) mb-1">
+                Nivel de habilidades intrapersonales (1 a 5).
+              </p>
               <input
                 name="habilidades_intrapersonales"
                 type="number"
@@ -350,7 +355,9 @@ const StudentModal: React.FC<Props> = ({
             {/* Conducta de riesgo */}
             <div className="mb-6 col-span-1">
               <label className="font-semibold">Conducta de riesgo</label>
-              <p className="text-xs text-(--color-primary) mb-1">Nivel de conducta de riesgo (1 a 5).</p>
+              <p className="text-xs text-(--color-primary) mb-1">
+                Nivel de conducta de riesgo (1 a 5).
+              </p>
               <input
                 name="conducta_riesgo"
                 type="number"
@@ -367,7 +374,9 @@ const StudentModal: React.FC<Props> = ({
             {/* Libros en casa */}
             <div className="mb-6 col-span-1 flex flex-col">
               <label className="font-semibold">Libros en casa</label>
-              <p className="text-xs text-(--color-primary) mb-1">¿El estudiante tiene libros en casa?</p>
+              <p className="text-xs text-(--color-primary) mb-1">
+                ¿El estudiante tiene libros en casa?
+              </p>
               <label className="flex items-center">
                 <input
                   type="checkbox"
@@ -382,7 +391,9 @@ const StudentModal: React.FC<Props> = ({
             {/* Internet en casa */}
             <div className="mb-6 col-span-1 flex flex-col">
               <label className="font-semibold">Internet en casa</label>
-              <p className="text-xs text-(--color-primary) mb-1">¿El estudiante tiene acceso a internet en casa?</p>
+              <p className="text-xs text-(--color-primary) mb-1">
+                ¿El estudiante tiene acceso a internet en casa?
+              </p>
               <label className="flex items-center">
                 <input
                   type="checkbox"
@@ -396,8 +407,12 @@ const StudentModal: React.FC<Props> = ({
 
             {/* Distancia a la escuela */}
             <div className="mb-6 col-span-1">
-              <label className="font-semibold">Distancia a la escuela (km)</label>
-              <p className="text-xs text-(--color-primary) mb-1">Distancia desde la casa a la escuela en kilómetros.</p>
+              <label className="font-semibold">
+                Distancia a la escuela (km)
+              </label>
+              <p className="text-xs text-(--color-primary) mb-1">
+                Distancia desde la casa a la escuela en kilómetros.
+              </p>
               <input
                 name="distancia_escuela_km"
                 type="number"
@@ -413,7 +428,9 @@ const StudentModal: React.FC<Props> = ({
             {/* Clima escolar */}
             <div className="mb-6 col-span-1">
               <label className="font-semibold">Clima escolar</label>
-              <p className="text-xs text-(--color-primary) mb-1">Percepción del clima escolar (1 a 5).</p>
+              <p className="text-xs text-(--color-primary) mb-1">
+                Percepción del clima escolar (1 a 5).
+              </p>
               <input
                 name="clima_escolar"
                 type="number"
@@ -429,8 +446,12 @@ const StudentModal: React.FC<Props> = ({
 
             {/* Capacitación docente anual */}
             <div className="mb-6 col-span-1">
-              <label className="font-semibold">Capacitación docente anual (horas)</label>
-              <p className="text-xs text-(--color-primary) mb-1">Horas de capacitación docente recibidas al año.</p>
+              <label className="font-semibold">
+                Capacitación docente anual (horas)
+              </label>
+              <p className="text-xs text-(--color-primary) mb-1">
+                Horas de capacitación docente recibidas al año.
+              </p>
               <input
                 name="capacitacion_docente_anual_horas"
                 type="number"
@@ -444,8 +465,12 @@ const StudentModal: React.FC<Props> = ({
 
             {/* Tenencia director */}
             <div className="mb-6 col-span-1">
-              <label className="font-semibold">Años del director en la escuela</label>
-              <p className="text-xs text-(--color-primary) mb-1">Cantidad de años que el director lleva en la escuela.</p>
+              <label className="font-semibold">
+                Años del director en la escuela
+              </label>
+              <p className="text-xs text-(--color-primary) mb-1">
+                Cantidad de años que el director lleva en la escuela.
+              </p>
               <input
                 name="tenencia_director_anos"
                 type="number"
@@ -460,7 +485,9 @@ const StudentModal: React.FC<Props> = ({
             {/* Adecuaciones curriculares */}
             <div className="mb-6 col-span-1 flex flex-col">
               <label className="font-semibold">Adecuaciones curriculares</label>
-              <p className="text-xs text-(--color-primary) mb-1">¿El estudiante tiene adecuaciones curriculares?</p>
+              <p className="text-xs text-(--color-primary) mb-1">
+                ¿El estudiante tiene adecuaciones curriculares?
+              </p>
               <label className="flex items-center">
                 <input
                   type="checkbox"
@@ -511,7 +538,9 @@ const StudentModal: React.FC<Props> = ({
             {/* Enfermedad grave familiar */}
             <div className="mb-6 col-span-1 flex flex-col">
               <label className="font-semibold">Enfermedad grave familiar</label>
-              <p className="text-xs text-(--color-primary) mb-1">¿Hay enfermedad grave en la familia?</p>
+              <p className="text-xs text-(--color-primary) mb-1">
+                ¿Hay enfermedad grave en la familia?
+              </p>
               <label className="flex items-center">
                 <input
                   type="checkbox"
@@ -543,7 +572,9 @@ const StudentModal: React.FC<Props> = ({
             {/* Resiliencia familiar */}
             <div className="mb-6 col-span-1">
               <label className="font-semibold">Resiliencia familiar</label>
-              <p className="text-xs text-(--color-primary) mb-1">Nivel de resiliencia familiar (1 a 5).</p>
+              <p className="text-xs text-(--color-primary) mb-1">
+                Nivel de resiliencia familiar (1 a 5).
+              </p>
               <input
                 name="resiliencia_familiar"
                 type="number"
@@ -559,7 +590,9 @@ const StudentModal: React.FC<Props> = ({
 
             {/* Conducta de riesgo observada */}
             <div className="mb-6 col-span-1 flex flex-col">
-              <label className="font-semibold">Conducta de riesgo observada</label>
+              <label className="font-semibold">
+                Conducta de riesgo observada
+              </label>
               <p className="text-xs text-(--color-primary) mb-1">
                 ¿Se ha observado conducta de riesgo en el estudiante?
               </p>

@@ -350,3 +350,35 @@
 
   
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Sección: Tecnologías utilizadas en Project Manager -->
+<h2 align="center">Tecnologías Utilizadas - Project Manager</h2>
+
+<!-- Contenedor centrado con ajuste automático de línea para los badges -->
+<div align="center" style="max-width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px;">
+  <!-- Git --> <img src="https://img.shields.io/badge/-Git-F05033?style=flat&logo=git&logoColor=white" alt="Git" />
+  <!-- GitHub --> <img src="https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub" />
+  <!-- Backlog --> <img src="https://img.shields.io/badge/-Backlog-009944?style=flat&logo=backlog&logoColor=white" alt="Backlog" />
+  <!-- Project Management --> <img src="https://img.shields.io/badge/-Project%20Management-007bff?style=flat&logo=trello&logoColor=white" alt="Project Management" />
+  <!-- Discord --> <img src="https://img.shields.io/badge/-Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord" />
+  <!-- Slack --> <img src="https://img.shields.io/badge/-Slack-4A154B?style=flat&logo=slack&logoColor=white" alt="Slack" />
+  <!-- Google Calendar --> <img src="https://img.shields.io/badge/-Google%20Calendar-4285F4?style=flat&logo=googlecalendar&logoColor=white" alt="Google Calendar" />
+  <!-- Google Meet --> <img src="https://img.shields.io/badge/-Google%20Meet-00897B?style=flat&logo=googlemeet&logoColor=white" alt="Google Meet" />
+  <!-- Photoshop --> <img src="https://img.shields.io/badge/-Photoshop-31A8FF?style=flat&logo=adobephotoshop&logoColor=white" alt="Photoshop" />
+  <!-- Illustrator --> <img src="https://img.shields.io/badge/-Illustrator-FF9A00?style=flat&logo=adobeillustrator&logoColor=white" alt="Illustrator" />
+  <!-- Visual Studio Code --> <img src="https://img.shields.io/badge/-Visual%20Studio%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white" alt="Visual Studio Code" />
+  <!-- Git Bash --> <img src="https://img.shields.io/badge/-Git%20Bash-DA552F?style=flat&logo=git&logoColor=white" alt="Git Bash" />
+  <!-- README --> <img src="https://img.shields.io/badge/-README-000000?style=flat&logo=readthedocs&logoColor=white" alt="README" />
+</div>
+

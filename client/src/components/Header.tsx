@@ -1,9 +1,11 @@
+import type React from "react";
+
 interface HeaderProps {
   title: string;
   description: string;
   action: {
     name: string;
-    onClick: () => void;
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
   };
 }
 

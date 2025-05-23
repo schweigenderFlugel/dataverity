@@ -1,6 +1,6 @@
 # src/generate_recommendations.py
 
-import os
+import io
 import pandas as pd
 from pathlib import Path
 
@@ -225,12 +225,13 @@ def generate_all_recommendations(data_path: str, output_dir: str) -> pd.DataFram
     df_recs = pd.DataFrame(resultados,
                            columns=['id_estudiante', 'nombre', 'grado', 'seccion', 'recomendaciones'])
 
-    os.makedirs(output_dir, exist_ok=True)
-    output_path = os.path.join(output_dir, 'recomendaciones_personalizadas.csv')
-    df_recs.to_csv(output_path, index=False)
-    print(f"Recomendaciones guardadas en: {output_path}")
+    # os.makedirs(output_dir, exist_ok=True)
+    # output_path = os.path.join(output_dir, 'recomendaciones_personalizadas.csv')
+    buffer = io.StringIO()
+    df_recs.to_csv(buffer, index=False)
+    buffer.seek(0)
 
-    return df_recs
+    return df_recs, buffer
 
 
 # if __name__ == '__main__':

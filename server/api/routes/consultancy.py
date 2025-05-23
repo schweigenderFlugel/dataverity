@@ -73,7 +73,7 @@ async def create_student(
       raise HTTPException(status_code=409, detail="El estuadiante ya existe")
     
 @router.put(
-  '/{consult_id}',
+  '/{id_estudiante}',
   status_code=201,
   tags=['Consultancy'], 
   summary='Create a new consult',
@@ -103,11 +103,11 @@ async def create_student(
 async def update_student(
   auth: AuthDep,
   session: DatabaseDep,
-  consult_id: UUID,
+  id_estudiante: int,
   body: StudentUpdate, # type: ignore
 ):
   try:
-    consult = session.get(Students, consult_id)
+    consult = session.get(Students, id_estudiante)
     if consult is None:
       raise HTTPException(status_code=404, detail="Consult not found")
     consult_data_dict = body.model_dump(exclude_unset=True)
@@ -228,4 +228,5 @@ async def get_recommendations(
   base_url = Path(__file__).resolve(strict=True).parent
   path = (base_url / ".." / "data" / "simulacion_estudiantes.csv").resolve()  
   output_dir = (base_url / ".." / "outputs").resolve()
-  return generate_all_recommendations(buffer, output_dir)
+  df, csv_buffer = generate_all_recommendations(buffer, output_dir)
+  return StreamingResponse(csv_buffer)

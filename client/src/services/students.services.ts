@@ -20,6 +20,7 @@ const createStudent = async (data: StudentForm, token: string) => {
 };
 
 const updateStudent = async (data: StudentForm, token: string) => {
+  console.log(data.id_estudiante)
   try {
     const response = await ApiInstance.put(
       `/consultancy/${data.id_estudiante}`,
@@ -88,9 +89,23 @@ const generateReport = async (token: string) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        responseType: 'blob',
       }
     );
-    return response.data;
+    const text = await response.data.text();
+
+    const rows = text.split('\n').filter((row: string) => row.trim() !== '');
+    const headers = rows[0].split(',');
+
+    const json = rows.slice(1).map((row: string) => {
+      const values = row.split(',');
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return headers.reduce((acc: any, header: string, idx: any) => {
+        acc[header.trim()] = values[idx]?.trim();
+        return acc;
+      }, {} as Record<string, string>);
+    });
+    return json
   } catch (err) {
     console.error("Error:", err);
     throw err;

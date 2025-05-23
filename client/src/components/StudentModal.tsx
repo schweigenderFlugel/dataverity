@@ -50,7 +50,8 @@ const StudentModal: React.FC<Props> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
+    console.log(formData.id_estudiante)
+    onSubmit({id_estudiante: formData.id_estudiante, ...formData});
     onClose();
   };
 

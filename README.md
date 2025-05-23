@@ -33,7 +33,7 @@
 
 <!-- HEADER: Imagen de portada representativa -->
 <div align="center" width="100">
-  <img src="https://github.com/schweigenderFlugel/dataverity/blob/6e33d73cd6e3a878fc21cfffb927ed23b8dc43e2/PM/img/portada.png"
+  <img src="https://github.com/schweigenderFlugel/dataverity/blob/d5f115cdd72f21e2694cf5fa38049f55bad54cd9/PM/img/portada2.png"
   alt="header"/>
 </div>
 

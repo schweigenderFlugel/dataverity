@@ -20,8 +20,8 @@ const StudentsTable = () => {
   };
 
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full max-w-4xl mt-6 mx-auto max-h-[50vh]">
-      <table className="min-w-[600px] w-full min-h-[50vh] text-sm text-left rtl:text-right text-black">
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full max-w-4xl mt-6 mx-auto min-h-[50vh] max-h-[50vh]">
+      <table className="min-w-[600px] w-full text-sm text-left rtl:text-right text-black">
         <thead className="text-xs text-white border border-(--color-primary) bg-(--color-primary)">
           <tr>
             <th scope="col" className="px-6 py-3">

@@ -33,7 +33,7 @@
 
 <!-- HEADER: Imagen de portada representativa -->
 <div align="center" width="100">
-  <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/3059f6c604e4d92dd6ace057d12030ca098d61de/exelente-portada.png"
+  <img src="https://github.com/schweigenderFlugel/dataverity/blob/6e33d73cd6e3a878fc21cfffb927ed23b8dc43e2/PM/img/dataverity-demo-video-gif.gif"
   alt="header"/>
 </div>
 

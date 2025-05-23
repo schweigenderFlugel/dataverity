@@ -30,7 +30,6 @@ export const StudentsProvider = ({ children }: { children: ReactNode }) => {
   const withToken = async (action: (token: string) => Promise<void> | void) => {
     const token = await getToken();
     if (!token) {
-      toast.error("No se pudo obtener el token");
       return;
     }
     await action(token);

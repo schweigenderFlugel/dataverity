@@ -1,0 +1,6 @@
+pandas>=1.4.0
+numpy>=1.22.0
+scikit-learn>=1.1.0
+matplotlib>=3.5.0
+# seaborn es opcional; si prefieres solo matplotlib puedes omitirlo.
+seaborn>=0.11.0

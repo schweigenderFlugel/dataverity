@@ -1,77 +1,11 @@
-const students = [
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-  {
-    name: "John Doe",
-    grade: "3° A",
-    id: "67543817873",
-  },
-];
+import type { JSX } from "react";
 
 /**
  * Componente tabla de estudiantes.
  * @description Este componente es la tabla de estudiantes que se muestra en la página de consultoría.
  * @returns {JSX.Element}
  */
-const StudentsTable = () => {
+const StudentsTable = ({ students }: { students: [] }): JSX.Element => {
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full max-w-4xl mt-6 mx-auto max-h-[50vh]">
       <table className="min-w-[600px] w-full text-sm text-left rtl:text-right text-black">
@@ -101,11 +35,11 @@ const StudentsTable = () => {
                 scope="row"
                 className="px-6 py-4 font-bold text-black whitespace-nowrap"
               >
-                {student.name}
+                {student['nombre']}
               </th>
-              <td className="px-6 py-4">{student.grade}</td>
+              <td className="px-6 py-4">{`${student['grado']}° ${student['seccion']}`}</td>
               <td className="px-6 py-4 text-(--color-primary-dark)">
-                {student.id}
+                {student['id_estudiante']}
               </td>
               <td className="px-6 py-4">
                 <a

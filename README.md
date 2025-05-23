@@ -78,12 +78,14 @@
 
 
 <!-- Sección de presentación en video del proyecto -->
+
 <div align="center" style="margin-top: 20px;">
-  <h2>🎥 Presentación del Proyecto</h2>
+  <h3>🎥 Presentación del Proyecto</h3>
   <p>Vista Previa del Proyecto</p>
 
   <!-- Imagen/GIF que muestra una vista previa del video -->
-  <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/63400d2517ce5145ea0792b1f7febb33d53ce5d9/ezgif.com-optimize.gif"
+  
+  <img src="https://github.com/schweigenderFlugel/dataverity/blob/d5f115cdd72f21e2694cf5fa38049f55bad54cd9/PM/img/dataverity-demo-video-gif.gif"
        alt="Vista Previa del Video"
        style="max-width: 100%; border-radius: 10px;">
 </div>

@@ -281,7 +281,19 @@
 
 <!-- Sección: Tecnologías utilizadas en análisis de datos -->
 
-<h2 align="center">Tecnologías Utilizadas - Data Analyst</h2>
+<h2 align="center">Tecnologías Utilizadas - Data Engineer</h2>
+
+
+
+<!-- Sección de enlaces destacados y recursos visuales -->
+<div align="center">
+  <br />
+  <a href="https://github.com/schweigenderFlugel/dataverity/blob/3f0ae2fc48980f07a13404b879ad87aa787c7dc8/data/README.md"><strong> documentacion Data Engineer »</strong></a>
+  <br /><br />
+  <a href="https://www.youtube.com/watch?v=yIr_1CasXkM&t=2933s">Demo Video</a> · 
+  <a href="https://dataverity.netlify.app/">Deploy</a> · 
+  <a href="https://drive.google.com/drive/folders/1-dWnkU2_lItQym67uMMjzyHib0sHOiKL">Demo Day</a>
+</div>
 
 <!-- Contenedor centrado con ajuste automático de línea para los badges -->
 

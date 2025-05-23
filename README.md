@@ -64,7 +64,7 @@
     
   </p>
   <p align="center">
-    <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/a82c6cef8a8c383d6ce8c2f022089ffc0205e058/img/Recurso%205%400.5x.png" width="200"/>
+    <img src="https://github.com/schweigenderFlugel/dataverity/blob/d5f115cdd72f21e2694cf5fa38049f55bad54cd9/PM/img/Recurso%2010.svg" width="200"/>
   </p>
 </div>
 

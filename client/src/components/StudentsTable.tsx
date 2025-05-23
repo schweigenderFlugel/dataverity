@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStudentsContext } from "@/hooks/useStudentsContext";
 import StudentModal from "./StudentModal";
 import type { StudentForm } from "@/interfaces/student-form";
@@ -15,8 +15,16 @@ const StudentsTable = () => {
   >(undefined);
   const { students, submitUpdateStudent } = useStudentsContext();
 
+  // Nuevo: abrir el modal solo cuando selectedStudent cambia
+  useEffect(() => {
+    if (selectedStudent) {
+      setIsOpen(true);
+    }
+  }, [selectedStudent]);
+
   const handleOpen = () => {
-    setIsOpen((prev) => !prev);
+    setIsOpen(false);
+    setSelectedStudent(undefined);
   };
 
   return (
@@ -56,10 +64,7 @@ const StudentsTable = () => {
               </td>
               <td className="px-6 py-4">
                 <button
-                  onClick={() => {
-                    setSelectedStudent(student);
-                    handleOpen();
-                  }}
+                  onClick={() => setSelectedStudent(student)}
                   className="font-medium text-(--color-primary) hover:underline"
                 >
                   Editar

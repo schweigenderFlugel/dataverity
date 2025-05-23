@@ -384,3 +384,108 @@
   <!-- README --> <img src="https://img.shields.io/badge/-README-000000?style=flat&logo=readthedocs&logoColor=white" alt="README" />
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 style="text-align:center; margin: 30px 0;">🛠️ Tecnologías Utilizadas</h2>
+
+<table style="width:100%; text-align:center; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th><h2>Frontend</h2></th>
+      <th><h3><b>Backend</b></h3></th>
+      <th><h3><b>Data Analyst</b></h3></th>
+      <th><h3><b>Project Manager</b></h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <!-- Badges Frontend en línea -->
+        <img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5" />
+        <img src="https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3" />
+        <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript" />
+        <img src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat&logo=typescript&logoColor=white" alt="TypeScript" />
+        <img src="https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black" alt="React" />
+        <img src="https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+        <img src="https://img.shields.io/badge/-Figma-F24E1E?style=flat&logo=figma&logoColor=white" alt="Figma" />
+        <img src="https://img.shields.io/badge/-Vite-646CFF?style=flat&logo=vite&logoColor=white" alt="Vite" />
+        <img src="https://img.shields.io/badge/-Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" alt="Node.js" />
+        <img src="https://img.shields.io/badge/-npm-CB3837?style=flat&logo=npm&logoColor=white" alt="npm" />
+        <img src="https://img.shields.io/badge/-Vercel-000000?style=flat&logo=vercel&logoColor=white" alt="Vercel" />
+      </td>
+      <td>
+        <!-- Badges Backend en línea -->
+        <img src="https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python" />
+        <img src="https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+        <img src="https://img.shields.io/badge/-Redis-DC382D?style=flat&logo=redis&logoColor=white" alt="Redis" />
+        <img src="https://img.shields.io/badge/-Swagger-85EA2D?style=flat&logo=swagger&logoColor=white" alt="Swagger" />
+        <img src="https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker" />
+        <img src="https://img.shields.io/badge/-Render-46E3B7?style=flat&logo=render&logoColor=white" alt="Render" />
+        <img src="https://img.shields.io/badge/-GitHub%20Actions-2088FF?style=flat&logo=github-actions&logoColor=white" alt="GitHub Actions" />
+        <img src="https://img.shields.io/badge/-Clerk-3A3A3A?style=flat&logo=clerk&logoColor=white" alt="Clerk" />
+        <img src="https://img.shields.io/badge/-Coveralls-3F5767?style=flat&logo=coveralls&logoColor=white" alt="Coveralls" />
+        <img src="https://img.shields.io/badge/-SonarQube-4E9BCD?style=flat&logo=sonarqube&logoColor=white" alt="SonarQube" />
+      </td>
+      <td>
+        <!-- Badges Data Analyst en línea -->
+        <img src="https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python" />
+        <img src="https://img.shields.io/badge/-Pandas-150458?style=flat&logo=pandas&logoColor=white" alt="Pandas" />
+        <img src="https://img.shields.io/badge/-NumPy-013243?style=flat&logo=numpy&logoColor=white" alt="NumPy" />
+        <img src="https://img.shields.io/badge/-Matplotlib-11557C?style=flat&logo=matplotlib&logoColor=white" alt="Matplotlib" />
+        <img src="https://img.shields.io/badge/-Seaborn-0099CC?style=flat&logo=seaborn&logoColor=white" alt="Seaborn" />
+        <img src="https://img.shields.io/badge/-SQL-4479A1?style=flat&logo=sqlite&logoColor=white" alt="SQL" />
+        <img src="https://img.shields.io/badge/-Excel-217346?style=flat&logo=microsoftexcel&logoColor=white" alt="Excel" />
+        <img src="https://img.shields.io/badge/-Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black" alt="Power BI" />
+        <img src="https://img.shields.io/badge/-Tableau-E97627?style=flat&logo=tableau&logoColor=white" alt="Tableau" />
+        <img src="https://img.shields.io/badge/-Looker%20Studio-4285F4?style=flat&logo=looker&logoColor=white" alt="Google Looker Studio" />
+      </td>
+      <td>
+        <!-- Badges Project Manager en línea -->
+        <img src="https://img.shields.io/badge/-Git-F05033?style=flat&logo=git&logoColor=white" alt="Git" />
+        <img src="https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub" />
+        <img src="https://img.shields.io/badge/-Backlog-009944?style=flat&logo=backlog&logoColor=white" alt="Backlog" />
+        <img src="https://img.shields.io/badge/-Project%20Management-007bff?style=flat&logo=trello&logoColor=white" alt="Project Management" />
+        <img src="https://img.shields.io/badge/-Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord" />
+        <img src="https://img.shields.io/badge/-Slack-4A154B?style=flat&logo=slack&logoColor=white" alt="Slack" />
+        <img src="https://img.shields.io/badge/-Google%20Calendar-4285F4?style=flat&logo=googlecalendar&logoColor=white" alt="Google Calendar" />
+        <img src="https://img.shields.io/badge/-Google%20Meet-00897B?style=flat&logo=googlemeet&logoColor=white" alt="Google Meet" />
+        <img src="https://img.shields.io/badge/-Photoshop-31A8FF?style=flat&logo=adobephotoshop&logoColor=white" alt="Photoshop" />
+        <img src="https://img.shields.io/badge/-Illustrator-FF9A00?style=flat&logo=adobeillustrator&logoColor=white" alt="Illustrator" />
+        <img src="https://img.shields.io/badge/-Visual%20Studio%20Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white" alt="Visual Studio Code" />
+        <img src="https://img.shields.io/badge/-Git%20Bash-DA552F?style=flat&logo=git&logoColor=white" alt="Git Bash" />
+        <img src="https://img.shields.io/badge/-README-000000?style=flat&logo=readthedocs&logoColor=white" alt="README" />
+      </td>
+    </tr>
+  </tbody>
+</table>

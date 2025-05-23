@@ -9,7 +9,7 @@ import csv
 from models.students import Students, StudentCreate, StudentUpdate, StudentsResponse
 from models.users import Users
 from models.response import Response
-from db import DatabaseDep
+from db import DatabaseDep, CacheDep
 from clerk import AuthDep
 
 router = APIRouter(
@@ -55,12 +55,12 @@ async def create_student(
     session.add(consult)
     session.commit()
     session.refresh(consult)
-    return { "message": 'Student successfully created!' }
+    return { "message": 'Estudiante creado existosamente!' }
   except Exception as e:
     if isinstance(e, IntegrityError) and "duplicate key value violates unique constraint" in str(e.orig):  # PostgreSQL
-      raise HTTPException(status_code=409, detail="The Student already exists")
+      raise HTTPException(status_code=409, detail="El estuadiante ya existe")
     else:
-      raise HTTPException(status_code=500, detail=e)
+      raise HTTPException(status_code=500, detail='Error inesperado!')
     
 @router.put(
   '/{consult_id}',
@@ -71,22 +71,22 @@ async def create_student(
     201: Response(
       description='Student successfully udpated',
       content_type='application/json',
-      message='Student successfully updated!',
+      message='',
     ).custom_response(),
     401: Response(
       description='The user is not authenticated', 
       content_type='application/json',
-      message="Not authenticated"
+      message="No autenticado"
     ).custom_response(),
     404: Response(
       description="The consult doesn't exist", 
       content_type='application/json',
-      message="Not Found"
+      message="Estudiante no encontrado"
     ).custom_response(),
     500: Response(
       description='Unexpected error has ocurred', 
       content_type='application/json',
-      message="Unexpected internal server error"
+      message="Error inesperado!"
     ).custom_response(),
   },
   )
@@ -105,7 +105,7 @@ async def update_student(
     session.add(consult)
     session.commit()
     session.refresh(consult)
-    return { "message": 'Student successfully updated!' }
+    return { "message": 'Estudiante actualizado existosamente!' }
   except HTTPException as http_err:
     raise http_err
   except Exception as e:
@@ -137,14 +137,22 @@ async def update_student(
 async def get_students_list(
   auth: AuthDep,
   session: DatabaseDep,
+  cache: CacheDep
 ):
   try:
     user_id = auth.payload['sub']
     user_found = session.exec(select(Users).where(Users.user_id == user_id)).first()
     consults = session.exec(select(Students).where(Students.user_id == user_found.id)).all()
+    cached_list = cache.get(f"item_{user_id}")
+    
+    if cached_list:
+        return cached_list
+    
+    # Store the item in Redis for future requests
+    cache.set(f"item_{user_found}", consults)
     return consults
-  except Exception as e:
-    raise HTTPException(status_code=500, detail=e)
+  except Exception:
+    raise HTTPException(status_code=500, detail='Error inesperado!')
     
 @router.get('', 
   status_code=200, 
@@ -160,7 +168,7 @@ async def get_students_list(
     500: Response(
       description='Unexpected error has ocurred', 
       content_type='application/json',
-      message="Unexpected internal server error"
+      message="Error inesperado!"
     ).custom_response(),
   },
 )
@@ -183,5 +191,5 @@ async def students_list_to_csv(
       media_type="text/csv",
       headers={"Content-Disposition": "attachment; filename=studiantes.csv"}
     )
-  except Exception as e:
-    raise HTTPException(status_code=500, detail=e)
+  except Exception:
+    raise HTTPException(status_code=500, detail='Error inesperado!')

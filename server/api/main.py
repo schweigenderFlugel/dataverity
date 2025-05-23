@@ -7,6 +7,7 @@ import os
 # from middlewares.logger import RequestLoggerMiddleware
 from routes import consultancy, auth
 from db import create_db_and_tables
+from gemini import get_gemini_response
 
 load_dotenv()
 
@@ -26,6 +27,8 @@ app.add_middleware(
 # app.add_middleware(RequestLoggerMiddleware)
 app.include_router(consultancy.router)
 app.include_router(auth.router)
+
+get_gemini_response()
 
 if __name__ == "__main__":
   environment = os.getenv("ENVIRONMENT")

@@ -49,17 +49,20 @@
   <br /><br />
   
   <!-- 🔗 Enlaces a recursos clave: video demo, deploy y demo day -->
-  <a href="https://www.youtube.com/watch?v=yIr_1CasXkM&t=2933s">Demo Video</a> · 
+  <a href="https://drive.google.com/file/d/1qMayW4YO0Zg7J5DCsERRA6ccgRqSWv0E/view">Demo Video</a> · 
   <a href="https://dataverity.netlify.app/">Deploy</a> · 
-  <a href="https://drive.google.com/drive/folders/1-dWnkU2_lItQym67uMMjzyHib0sHOiKL">Demo Day</a>
-  
-  <br /><br />
-  
-  <!-- 🔄 Badge: Estado de Deploy en Netlify -->
+  <a href="https://www.figma.com/design/YVAwOZF2E1JKFarg6rjXjz/Dataverity?node-id=17-501">Demo Day</a>
+
+
+<!-- 🔄 Badge: Estado de Deploy en Netlify -->
   <!-- Este badge muestra en tiempo real si la aplicación web está correctamente desplegada en Netlify -->
   <a href="https://app.netlify.com/projects/dataverity/deploys" target="_blank">
     <img src="https://api.netlify.com/api/v1/badges/33595575-32ed-4082-9146-c8fc9bbf285d/deploy-status" alt="Netlify Status" />
   </a>
+  
+  <br /><br />
+  
+  
 </div>
 
 

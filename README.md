@@ -54,7 +54,7 @@
   <a href="https://drive.google.com/drive/folders/1-dWnkU2_lItQym67uMMjzyHib0sHOiKL"><strong>Explore the docs »</strong></a>
   <br /><br />
   <a href="https://www.youtube.com/watch?v=yIr_1CasXkM&t=2933s">Demo Video</a> · 
-  <a href="https://iupi-fintech-nine.vercel.app/auth">Deploy</a> · 
+  <a href="https://dataverity.netlify.app/">Deploy</a> · 
   <a href="https://drive.google.com/drive/folders/1-dWnkU2_lItQym67uMMjzyHib0sHOiKL">Demo Day</a>
 </div>
 

@@ -2,11 +2,12 @@ from fastapi import APIRouter, Body, HTTPException
 from pathlib import Path
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import select
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, JSONResponse
 from uuid import UUID
 
 import io
 import csv
+import json
 
 from models.students import Students, StudentCreate, StudentUpdate, StudentsResponse
 from models.users import Users
@@ -51,19 +52,25 @@ router = APIRouter(
 async def create_student(
   auth: AuthDep,
   session: DatabaseDep,
+  cache: CacheDep,
   body: StudentCreate = Body(),
 ):
   try:
-    consult = Students.model_validate(body.model_dump())
+    user_id = auth.payload['sub']
+    user_found = session.exec(select(Users).where(Users.user_id == user_id)).first()
+    cached_list = cache.get(f"list_{user_found.id}")
+    if cached_list:
+      cache.delete(f"list_{user_found.id}")
+    data = body.model_dump()
+    data['user_id'] = user_found.id 
+    consult = Students.model_validate(data)
     session.add(consult)
     session.commit()
     session.refresh(consult)
-    return { "message": 'Estudiante creado existosamente!' }
+    return { "message": 'Estudiante creado exitosamente!' }
   except Exception as e:
     if isinstance(e, IntegrityError) and "duplicate key value violates unique constraint" in str(e.orig):  # PostgreSQL
       raise HTTPException(status_code=409, detail="El estuadiante ya existe")
-    else:
-      raise HTTPException(status_code=500, detail='Error inesperado!')
     
 @router.put(
   '/{consult_id}',
@@ -114,7 +121,8 @@ async def update_student(
   except Exception as e:
     raise HTTPException(status_code=500, detail=e)
   
-@router.get('', 
+@router.get(
+  '/list', 
   status_code=200, 
   tags=['Consultancy'], 
   summary='Consultancy',
@@ -146,18 +154,20 @@ async def get_students_list(
     user_id = auth.payload['sub']
     user_found = session.exec(select(Users).where(Users.user_id == user_id)).first()
     consults = session.exec(select(Students).where(Students.user_id == user_found.id)).all()
-    cached_list = cache.get(f"item_{user_id}")
+    cached_list = cache.get(f"list_{user_found.id}")
     
     if cached_list:
-        return cached_list
+      return JSONResponse(content=json.loads(cached_list))
     
-    # Store the item in Redis for future requests
-    cache.set(f"item_{user_found}", consults)
-    return consults
+    data = [student.model_dump(mode='json') for student in consults]
+    cache.set(f"list_{user_found.id}", json.dumps(data), ex=120)
+    return JSONResponse(content=data)
   except Exception:
     raise HTTPException(status_code=500, detail='Error inesperado!')
+
     
-@router.get('', 
+@router.get(
+  '/list-to-csv', 
   status_code=200, 
   tags=['Consultancy'], 
   summary='Consultancy',
@@ -181,12 +191,14 @@ async def students_list_to_csv(
 ):
   try:
     buffer = io.StringIO()
-    consults = session.exec(select(Students)).all()
+    user_id = auth.payload['sub']
+    user_found = session.exec(select(Users).where(Users.user_id == user_id)).first()
+    consults = session.exec(select(Students).where(Students.user_id == user_found.id)).all()
     keys = list(StudentsResponse.model_fields.keys())
     writer = csv.DictWriter(buffer, fieldnames=keys)
     writer.writeheader()
     for c in consults:
-      ignored = {"created_at", "updated_at"}
+      ignored = {"created_at", "updated_at", 'user_id', 'user'}
       writer.writerow(c.model_dump(exclude=ignored))
     buffer.seek(0)
     return StreamingResponse(

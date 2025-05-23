@@ -24,6 +24,6 @@ async def login(
       session.add(user)
       session.commit()
       session.refresh(user)
-      return { "message": "Successfully registered" }
+      return { "message": "Exitosamente registrado!" }
   except Exception as e:
-    raise HTTPException(status_code=500, detail=e)
+    raise HTTPException(status_code=500, detail='Error inesperado!')

@@ -42,7 +42,7 @@ class StudentsBase(SQLModel):
   calificacion_lengua: Decimal = Field(sa_column=Column(Numeric(4,2)), gt=-1, lt=11)
   horas_clase_semanales: int = Field(sa_column=Column(SmallInteger))
   motivacion: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
-  habilidades_de_autoregulacion: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
+  habilidades_de_autorregulacion: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
   habilidades_interpersonales: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
   habilidades_intrapersonales: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
   conducta_riesgo: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
@@ -57,7 +57,7 @@ class StudentsBase(SQLModel):
   violencia_familiar: bool = Field(sa_column=Column(Boolean))
   enfermedad_grave_familiar: bool = Field(sa_column=Column(Boolean))
   catastrofe_familiar: bool = Field(sa_column=Column(Boolean))
-  resilencia_familiar: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
+  resiliencia_familiar: int = Field(sa_column=Column(SmallInteger), gt=0, lt=6)
   conducta_riesgo_observada: bool = Field(sa_column=Column(Boolean))
 
 class StudentIdModel(SQLModel):

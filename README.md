@@ -279,9 +279,16 @@
 
 
 
-<!-- Sección: Tecnologías utilizadas en análisis de datos -->
+<!-- Sección: Tecnologías utilizadas en Data Engineer -->
 
 <h2 align="center">Tecnologías Utilizadas - Data Engineer</h2>
+
+<br><br>
+<div align="center">
+  <img src="https://github.com/schweigenderFlugel/dataverity/blob/edd6bf3e2636b4a9762930435b885d506739e936/PM/img/Data%20Engineer-tecnologias-utilizadas-2.svg" alt="Tecnologías utilizadas - Data Engineer" width="100%">
+</div>
+<br><br>
+
 
 
 

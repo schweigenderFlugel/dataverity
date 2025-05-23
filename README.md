@@ -9,7 +9,7 @@
     <tr>
       <td>
         <!-- Logotipo del proyecto -->
-        <img src="https://github.com/Jhone-fori-freelancer/Hackathon-Express-N-4-/blob/d0e8ebd5c1b3a8394509f1e85f862bb9e6cc6702/img/Recurso%205%400.5x.png" width="80">
+        <img src="https://github.com/schweigenderFlugel/dataverity/blob/6e33d73cd6e3a878fc21cfffb927ed23b8dc43e2/PM/img/dataverity-logo.svg" width="80">
       </td>
       <td>
         <!-- Título con enlace al sistema de autenticación -->

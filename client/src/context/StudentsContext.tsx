@@ -6,7 +6,7 @@ import {
   updateStudent,
 } from "@/services/students.services";
 import { useAuth } from "@clerk/clerk-react";
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, useEffect, useState, type ReactNode } from "react";
 
 interface StudentsContextType {
   students: StudentForm[] | [];
@@ -54,6 +54,11 @@ export const StudentsProvider = ({ children }: { children: ReactNode }) => {
       updateStudent(data, token);
     });
   };
+
+  useEffect(() => {
+    fetchStudents()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <StudentsContext.Provider

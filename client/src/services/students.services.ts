@@ -80,4 +80,21 @@ const getStudentsListToCsv = async (token: string) => {
   }
 }
 
-export { createStudent, updateStudent, getStudentsList, getStudentsListToCsv };
+const generateReport = async (token: string) => {
+  try {
+    const response = await ApiInstance.get(
+      "/consultancy/recommendations",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (err) {
+    console.error("Error:", err);
+    throw err;
+  }
+}
+
+export { createStudent, updateStudent, getStudentsList, getStudentsListToCsv, generateReport };

@@ -210,7 +210,7 @@
 
   <td align="center">
       <a href="https://github.com/alexmarinmendez">
-        <img src="https://images.weserv.nl/?url=github.com/schweigenderFlugel.png&h=100&w=100&fit=cover&mask=circle" width="100" />
+        <img src="https://images.weserv.nl/?url=linkedin.com/in/facundo-castro-87b864234.png&h=100&w=100&fit=cover&mask=circle" width="100" />
       </a><br/>
       <strong>Facundo Castro</strong><br/>
       <a href="https://github.com/schweigenderFlugel">

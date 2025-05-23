@@ -279,7 +279,7 @@
 
 <!-- Sección: Tecnologías utilizadas en el backend -->
 
-<h2 align="center">Tecnologías Utilizadas - frontend</h2>
+<h2 align="center">Tecnologías Utilizadas - Backend</h2>
 
 <!-- Contenedor centrado con ajuste automático de línea para los badges -->
 
@@ -308,7 +308,7 @@
 
 
 <!-- Sección: Tecnologías utilizadas en el frontend -->
-<h2 align="center">Tecnologías Utilizadas - frontend</h2>
+<h2 align="center">Tecnologías Utilizadas - Frontend</h2>
 
 <!-- Contenedor centrado con ajuste automático de línea para los badges -->
 <div align="center" style="max-width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px;">

@@ -1,0 +1,35 @@
+name: dataverity
+
+services:
+  postgres:
+    image: postgres:15-alpine3.20
+    container_name: dataverity-database
+    restart: always
+    environment:
+      POSTGRES_USER: dataverity-admin
+      POSTGRES_PASSWORD: 1cf4eb8f04a84637
+      POSTGRES_DB: dataverity-db
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U dataverity-admin -d dataverity-db']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  app:
+    image: schweigenderflugel/dataverity:0.2.2
+    container_name: dataverity-app
+    hostname: localhost
+    depends_on: 
+      postgres: 
+        condition: service_healthy
+    env_file:
+      - ./.env
+    ports:
+      - '3000:3000'
+
+volumes:
+  postgres-data:

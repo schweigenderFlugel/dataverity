@@ -5,15 +5,30 @@ on:
     branches:
       - main
     paths:
-      - '/server/**'
+      - 'server/**'
   pull_request:
     branches: ['*']
     paths:
-      - '/server/**'
+      - 'server/**'
 
 jobs:
-  server:
-    runs-on: ubuntu-20.04
+  server-testing:
+    runs-on: ubuntu-22.04
+
+    services:
+      postgres:
+        image: postgres:15-alpine3.20
+        env:
+          POSTGRES_USER: 'dataverity-test'
+          POSTGRES_PASSWORD: '1cf4eb8f04a84637'
+          POSTGRES_DB: 'dataverity-test-db'
+        ports:
+          - 5432:5432
+        options: >- 
+          --health-cmd pg_isready 
+          --health-interval 10s 
+          --health-timeout 5s 
+          --health-retries 5
 
     steps:
       - name: Checkout
@@ -21,3 +36,34 @@ jobs:
         with: 
           fetch-depth: 0
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install packages
+        run: pip install --no-cache-dir -r requirements.dev.txt
+        working-directory: ./server
+      
+      - name: Tests E2E
+        run: |
+          export PYTHONPATH=$(pwd)/api 
+          coverage run --source=api -m  pytest
+        working-directory: ./server
+        env:
+          DATABASE_URL: 'postgresql://dataverity-test:1cf4eb8f04a84637@localhost:5432/dataverity-test-db'
+          
+      - name: Coverage
+        run: coveralls --service=github
+        working-directory: ./server
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        with:
+          args: >
+            -D sonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -D sonar.organization=${{ secrets.SONAR_ORG }}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

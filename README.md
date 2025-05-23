@@ -194,40 +194,42 @@
   <td></td>
   </tr>
 
-  <!-- Fila 2: presentación de otros dos integrantes del equipo -->
+
+
+  <!-- Fila 2: un solo integrante centrado debajo del del medio -->
+  
   <tr>
+    <!-- Celdas vacías para centrar a Raúl Díaz debajo de Jhonatan Remon -->  
+    
+  <td></td>
     <td></td>
 
-  <!-- Integrante: Raúl Díaz -->
+    <!-- Integrante: Raúl Díaz -->
+    
   <td align="center">
-      <a href="https://github.com/Raul-DC">
+      <a href="https://github.com/usuario4">
         <img src="https://images.weserv.nl/?url=github.com/Raul-DC.png&h=100&w=100&fit=cover&mask=circle" width="100" />
       </a><br/>
       <strong>Raúl Díaz</strong><br/>
       <a href="https://github.com/usuario4">
         <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
       </a>
-      <a href="https://www.linkedin.com/in/raul-dc/">
+      <a href="https://www.linkedin.com/in/usuario4/">
         <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
       </a>
     </td>
 
   <td></td>
-
-    <!-- Integrante: Usuario 5 -->
-  <td align="center">
-      <a href="https://github.com/usuario5">
-        <img src="https://images.weserv.nl/?url=github.com/usuario5.png&h=100&w=100&fit=cover&mask=circle" width="100" />
-      </a><br/>
-      <strong>Usuario 5</strong><br/>
-      <a href="https://github.com/usuario5">
-        <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
-      </a>
-      <a href="https://www.linkedin.com/in/usuario5/">
-        <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
-      </a>
-    </td>
-
-  <td></td>
+    <td></td>
   </tr>
 </table>
+
+
+
+
+
+
+
+
+
+    

@@ -4,6 +4,7 @@ import HomePage from "@pages/HomePage";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import StudentsPage from "@/pages/StudentsPage";
 import ReportingPage from "@/pages/ReportingPage";
+import OurServicePage from "@/pages/OurServicesPage";
 import LoadingPage from "@/pages/LoadingPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import { useAuth } from "@clerk/clerk-react";
@@ -24,6 +25,7 @@ const AppRoutes = () => {
           <Route index element={<Navigate to="/estudiantes" replace />} />
           <Route path="estudiantes" element={<StudentsPage />} />
           <Route path="reportes" element={<ReportingPage />} />
+          <Route path="servicios" element={<OurServicePage />} />
         </Route>
         <Route path="home" element={<HomePage />} />
       </Route>

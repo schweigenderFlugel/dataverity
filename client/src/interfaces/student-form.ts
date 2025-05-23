@@ -1,4 +1,5 @@
 export interface StudentForm {
+  id_estudiante?: string;
   legajo: string;
   nombre: string;
   edad: number;

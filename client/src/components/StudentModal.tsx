@@ -7,12 +7,13 @@ import {
 } from "@headlessui/react";
 import { defaultStudentData } from "@/utils/default-student-data";
 import type { StudentForm } from "@/interfaces/student-form";
+import { toast } from "react-toastify";
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
   initialData?: StudentForm;
-  onSubmit: (data: StudentForm) => void;
+  onSubmit: ((data: StudentForm) => void);
 }
 
 /**
@@ -50,8 +51,18 @@ const StudentModal: React.FC<Props> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
-    onClose();
+    try {
+      onSubmit(formData);
+      toast.success(
+        initialData
+          ? "Estudiante editado correctamente"
+          : "Estudiante creado correctamente"
+      );
+      onClose();
+    } catch (error) {
+      toast.error("Ocurrió un error al guardar el estudiante");
+      console.error("Error al guardar el estudiante:", error);
+    }
   };
 
   return (

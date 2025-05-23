@@ -19,10 +19,11 @@ const createStudent = async (data: StudentForm, token: string) => {
   }
 };
 
-const register = async (token: string) => {
+const updateStudent = async (data: StudentForm, token: string) => {
   try {
-    const response = await ApiInstance.get(
-      "/auth",
+    const response = await ApiInstance.put(
+      `/consultancy/${data.id_estudiante}`,
+      data,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -34,7 +35,7 @@ const register = async (token: string) => {
     console.error("Error:", err);
     throw err;
   }
-}
+};
 
 const getStudentsList = async (token: string) => {
   try {
@@ -79,4 +80,4 @@ const getStudentsListToCsv = async (token: string) => {
   }
 }
 
-export { createStudent, register, getStudentsList, getStudentsListToCsv };
+export { createStudent, updateStudent, getStudentsList, getStudentsListToCsv };

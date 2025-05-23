@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "@/components/Header";
 import StudentsTable from "@/components/StudentsTable";
 import StudentModal from "@/components/StudentModal";
-import { createStudent, register, getStudentsList } from "@/services/students.services";
-import { useAuth } from "@clerk/clerk-react";
-import type { StudentForm } from "@/interfaces/student-form";
+import { useStudentsContext } from "@/hooks/useStudentsContext";
 
 /**
  * Pagina de estudiantes
@@ -13,36 +11,10 @@ import type { StudentForm } from "@/interfaces/student-form";
  */
 const StudentsPage = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [students, setStudents] = useState<[]>([])
-  const { getToken } = useAuth();
-
-  useEffect(()=> {
-    getToken().then((token) => {
-      if (!token) {
-        console.error("No se pudo obtener el token");
-        return;
-      }
-  
-      register(token)
-      getStudentsList(token).then((students) => {
-        setStudents(students)
-      })
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const { submitCreateStudent } = useStudentsContext();
 
   const handleOpen = () => {
     setIsOpen((prev) => !prev);
-  };
-
-  const onSubmit = async (data: StudentForm) => {
-    getToken().then((token) => {
-      if (!token) {
-        console.error("No se pudo obtener el token");
-        return;
-      }
-      createStudent(data, token);
-    });
   };
 
   return (
@@ -55,8 +27,12 @@ const StudentsPage = () => {
           onClick: handleOpen,
         }}
       />
-      <StudentsTable students={students} />
-      <StudentModal isOpen={isOpen} onClose={handleOpen} onSubmit={onSubmit} />
+      <StudentsTable />
+      <StudentModal
+        isOpen={isOpen}
+        onClose={handleOpen}
+        onSubmit={submitCreateStudent}
+      />
     </div>
   );
 };

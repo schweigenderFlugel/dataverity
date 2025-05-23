@@ -1,6 +1,8 @@
 import "./App.css";
 import { BrowserRouter } from "react-router";
 import AppRoutes from "./router/routes";
+import { StudentsProvider } from "./context/StudentsContext";
+import { ToastContainer } from "react-toastify";
 
 /**
  * Componente principal de la aplicación
@@ -9,7 +11,10 @@ import AppRoutes from "./router/routes";
 function App() {
   return (
     <BrowserRouter>
-      <AppRoutes />
+      <StudentsProvider>
+        <AppRoutes />
+        <ToastContainer />
+      </StudentsProvider>
     </BrowserRouter>
   );
 }

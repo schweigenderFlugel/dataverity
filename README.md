@@ -38,25 +38,42 @@
 </div>
 
 
-
-
-
-
-
-<!-- Espaciador adicional para mantener la estructura limpia -->
-<div align="center">
-<br />
-</div>
-
 <!-- Sección de enlaces destacados y recursos visuales -->
 <div align="center">
   <br />
-  <a href="https://github.com/schweigenderFlugel/dataverity/blob/3f0ae2fc48980f07a13404b879ad87aa787c7dc8/data/README.md"><strong> documentacion Data Engineer »</strong></a>
+  <!-- 📄 Enlace a la documentación de Data Engineer -->
+  <a href="https://github.com/schweigenderFlugel/dataverity/blob/3f0ae2fc48980f07a13404b879ad87aa787c7dc8/data/README.md">
+    <strong>documentacion Data Engineer »</strong>
+  </a>
+  
   <br /><br />
+  
+  <!-- 🔗 Enlaces a recursos clave: video demo, deploy y demo day -->
   <a href="https://www.youtube.com/watch?v=yIr_1CasXkM&t=2933s">Demo Video</a> · 
   <a href="https://dataverity.netlify.app/">Deploy</a> · 
   <a href="https://drive.google.com/drive/folders/1-dWnkU2_lItQym67uMMjzyHib0sHOiKL">Demo Day</a>
+  
+  <br /><br />
+  
+  <!-- 🔄 Badge: Estado de Deploy en Netlify -->
+  <!-- Este badge muestra en tiempo real si la aplicación web está correctamente desplegada en Netlify -->
+  <a href="https://app.netlify.com/projects/dataverity/deploys" target="_blank">
+    <img src="https://api.netlify.com/api/v1/badges/33595575-32ed-4082-9146-c8fc9bbf285d/deploy-status" alt="Netlify Status" />
+  </a>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Imagen destacada o representativa del proyecto -->
 <div align="center">

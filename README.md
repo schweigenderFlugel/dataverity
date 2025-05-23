@@ -204,7 +204,7 @@
   <td></td>
     <td></td>
 
-    <!-- Integrante: Raúl Díaz -->
+ <!-- Integrante: Raúl Díaz -->
     
   <td align="center">
       <a href="https://github.com/Raul-DC">

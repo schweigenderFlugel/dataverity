@@ -6,7 +6,7 @@ import {
   updateStudent,
 } from "@/services/students.services";
 import { useAuth } from "@clerk/clerk-react";
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, useEffect, useState, type ReactNode } from "react";
 import { toast } from "react-toastify";
 
 interface StudentsContextType {
@@ -46,6 +46,11 @@ export const StudentsProvider = ({ children }: { children: ReactNode }) => {
       }
     });
   };
+
+  useEffect(()=> {
+    fetchStudents();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const submitCreateStudent = (data: StudentForm) => {
     withToken(async (token) => {

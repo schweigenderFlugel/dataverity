@@ -313,18 +313,33 @@
 
 <!-- Contenedor centrado con ajuste automático de línea para los badges -->
 
-<div align="center" style="max-width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px;">
+
+
+<!--  Sección: Tecnologías Utilizadas - Data Engineer -->
+<br><br>
+
+<!-- Título centrado -->
+<div align="center">
+  <h2> Tecnologías Utilizadas </h2>
+</div>
+
+<!-- Badges de herramientas y librerías -->
+<div align="center">
   <!-- Python --> <img src="https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
   <!-- Pandas --> <img src="https://img.shields.io/badge/-Pandas-150458?style=flat&logo=pandas&logoColor=white" alt="Pandas">
   <!-- NumPy --> <img src="https://img.shields.io/badge/-NumPy-013243?style=flat&logo=numpy&logoColor=white" alt="NumPy">
-  <!-- Matplotlib --> <img src="https://img.shields.io/badge/-Matplotlib-11557C?style=flat&logo=matplotlib&logoColor=white" alt="Matplotlib">
-  <!-- Seaborn --> <img src="https://img.shields.io/badge/-Seaborn-0099CC?style=flat&logo=seaborn&logoColor=white" alt="Seaborn">
-  <!-- SQL --> <img src="https://img.shields.io/badge/-SQL-4479A1?style=flat&logo=sqlite&logoColor=white" alt="SQL">
-  <!-- Excel --> <img src="https://img.shields.io/badge/-Excel-217346?style=flat&logo=microsoftexcel&logoColor=white" alt="Excel">
+  <!-- scikit-learn (sklearn) --> <img src="https://img.shields.io/badge/-Scikit--Learn-F7931E?style=flat&logo=scikit-learn&logoColor=white" alt="Scikit-learn">
+  <!-- joblib (no badge oficial) --> <img src="https://img.shields.io/badge/-joblib-7A86B8?style=flat&logo=python&logoColor=white" alt="joblib">
+  <!-- os (standard Python) --> <img src="https://img.shields.io/badge/-os-4B8BBE?style=flat&logo=python&logoColor=white" alt="os module">
+  <!-- random (standard Python) --> <img src="https://img.shields.io/badge/-random-306998?style=flat&logo=python&logoColor=white" alt="random module">
+  <!-- string (standard Python) --> <img src="https://img.shields.io/badge/-string-FFE873?style=flat&logo=python&logoColor=black" alt="string module">
+  <!-- PostgreSQL --> <img src="https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL">
   <!-- Power BI --> <img src="https://img.shields.io/badge/-Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black" alt="Power BI">
-  <!-- Tableau --> <img src="https://img.shields.io/badge/-Tableau-E97627?style=flat&logo=tableau&logoColor=white" alt="Tableau">
-  <!-- Google Data Studio --> <img src="https://img.shields.io/badge/-Looker%20Studio-4285F4?style=flat&logo=looker&logoColor=white" alt="Google Looker Studio">
 </div>
+
+<!-- Espacio al final de la sección -->
+<br><br>
+
 
 
 

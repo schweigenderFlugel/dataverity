@@ -14,7 +14,7 @@
       <td>
         <!-- Título con enlace al sistema de autenticación -->
         <h1 align="center" style="color: #007bff; font-size: 3rem;"> 
-          <a href="https://iupi-fintech-nine.vercel.app/auth">· Dataverity </a> ·
+          <a href="https://dataverity.netlify.app/">· Dataverity </a> ·
         </h1>
       </td>
     </tr>

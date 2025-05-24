@@ -94,6 +94,7 @@ const StudentsTable = () => {
         </tbody>
       </table>
       <StudentModal
+        key={selectedStudent?.id_estudiante || "new"}
         isOpen={isOpen}
         onClose={handleClose}
         initialData={selectedStudent}

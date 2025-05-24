@@ -15,16 +15,21 @@ const StudentsTable = () => {
   >(undefined);
   const { students, submitUpdateStudent, loading } = useStudentsContext();
 
-  // Nuevo: abrir el modal solo cuando selectedStudent cambia
+  // Abrir modal cuando hay un estudiante seleccionado
   useEffect(() => {
-    if (selectedStudent) {
-      setIsOpen(true);
-    }
+    setIsOpen(!!selectedStudent);
   }, [selectedStudent]);
 
-  const handleOpen = () => {
+  // Manejar cierre del modal y limpiar el estudiante seleccionado
+  const handleClose = () => {
     setIsOpen(false);
     setSelectedStudent(undefined);
+  };
+
+  // Nuevo: función para manejar el submit y cerrar el modal
+  const handleSubmit = (data: StudentForm) => {
+    submitUpdateStudent(data);
+    handleClose();
   };
 
   return (
@@ -90,9 +95,9 @@ const StudentsTable = () => {
       </table>
       <StudentModal
         isOpen={isOpen}
-        onClose={handleOpen}
+        onClose={handleClose}
         initialData={selectedStudent}
-        onSubmit={submitUpdateStudent}
+        onSubmit={handleSubmit}
       />
     </div>
   );

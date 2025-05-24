@@ -15,7 +15,6 @@ const ChartContainer = ({ reports }: { reports: Reports[] }) => {
   const [typedRecommendations, setTypedRecommendations] = useState<string[]>([]);
 
   useEffect(() => {
-    // Reinicia el efecto cuando cambian los reports
     if (reports.length === 0) {
       setTypedRecommendations([]);
       return;
@@ -32,7 +31,7 @@ const ChartContainer = ({ reports }: { reports: Reports[] }) => {
           current += recs[j];
           newTyped[i] = current;
           setTypedRecommendations([...newTyped]);
-          await new Promise((res) => setTimeout(res, 15)); // velocidad de tipeo
+          await new Promise((res) => setTimeout(res, 3)); // velocidad más rápida
         }
         newTyped[i] = recs;
         setTypedRecommendations([...newTyped]);
@@ -82,9 +81,16 @@ const ChartContainer = ({ reports }: { reports: Reports[] }) => {
               <p className="font-bold text-2xl">{report.nombre}</p>
               <p className="font-bold text-[16px]">{report.grado}° {report.seccion}</p>
               <div className="font-bold text-[16px]">Recomendaciones:</div>
-              <pre className="whitespace-pre-wrap text-[15px]">
+              <pre
+                className="whitespace-pre-wrap text-[15px] font-mono min-h-[2.5em] max-w-[40ch] transition-all"
+                style={{ lineHeight: "1.5" }}
+              >
                 {typedRecommendations[index] ?? ""}
-                {typedRecommendations[index]?.length !== report.recomendaciones.split("|").join("\n").length && <span className="animate-pulse">|</span>}
+
+                {(typedRecommendations[index]?.length !== report.recomendaciones.split("|").join("\n").length)
+                  ? <span className="animate-pulse">|</span>
+                  : <span style={{ opacity: 0 }}>|</span>
+                }
               </pre>
             </div>
           ))}

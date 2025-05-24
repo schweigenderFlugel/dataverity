@@ -2,7 +2,6 @@
 
 import io
 import pandas as pd
-from pathlib import Path
 
 def load_data(data_path: str) -> pd.DataFrame:
     """
@@ -195,7 +194,7 @@ def generar_recomendaciones_para_alumno(row: pd.Series) -> list:
     return recomendaciones
 
 
-def generate_all_recommendations(data_path: str, output_dir: str) -> pd.DataFrame:
+def generate_all_recommendations(data_path: str) -> pd.DataFrame:
     """
     - Carga el CSV con los datos de estudiantes.
     - Para cada estudiante (cada fila), invoca generar_recomendaciones_para_alumno.

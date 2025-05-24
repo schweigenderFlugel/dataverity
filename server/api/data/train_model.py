@@ -60,8 +60,8 @@ def train_random_forest(data_path: str, output_dir: str, target_col: str = 'cali
 
 if __name__ == '__main__':
     base_url = Path(__file__).resolve(strict=True).parent
-    path = (base_url / ".." / "data" / "simulacion_estudiantes.csv").resolve()
-    output_dir = (base_url / ".." / "outputs").resolve()
+    path = (base_url / "simulacion_estudiantes.csv").resolve()
+    output_dir = (base_url / "outputs").resolve()
 
     # Entrenar para Matemática
     train_random_forest(path, output_dir, target_col='calificacion_matematica')

@@ -226,6 +226,6 @@ async def get_recommendations(
     writer.writerow(c.model_dump(exclude=ignored))
   buffer.seek(0)
   base_url = Path(__file__).resolve(strict=True).parent
-  output_dir = (base_url / ".." / "outputs").resolve()
-  df, csv_buffer = generate_all_recommendations(buffer, output_dir)
+  path = (base_url / ".." / "data" / "simulacion_estudiantes.csv").resolve()
+  df, csv_buffer = generate_all_recommendations(path)
   return StreamingResponse(csv_buffer)

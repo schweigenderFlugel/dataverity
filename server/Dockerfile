@@ -1,4 +1,4 @@
-FROM python:3.13-alpine3.21
+FROM python:3.13-alpine3.21 AS build
 
 WORKDIR /source
 
@@ -29,4 +29,4 @@ RUN addgroup -g 1234 dataverity-group && \
 
 USER dataverity-user:dataverity-group
 
-CMD ["python", "main.py"]
+CMD ["./venv/bin/python", "main.py"]

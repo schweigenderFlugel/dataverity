@@ -1,0 +1,18 @@
+releases:
+  - name: client
+    namespace: frontend
+    createNamespace: true
+    chart: ./client
+    values:
+    - ./client/values.yaml
+    - ./client/frontend.secrets.yaml
+    wait: true
+
+  - name: server
+    namespace: backend
+    createNamespace: true
+    chart: ./server
+    values:
+    - ./server/values.yaml
+    - ./server/backend.secrets.yaml
+    wait: true

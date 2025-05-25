@@ -18,7 +18,7 @@ async def login(
   try:
     user_id = auth.payload['sub']
     registered = session.exec(select(Users).where(Users.user_id == user_id)).first()
-    if registered: return { "message": "Successfully signed in" }
+    if registered: return { "message": "Ingesaste exitosamente!" }
     else:
       user = Users(user_id=user_id)
       session.add(user)

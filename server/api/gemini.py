@@ -16,4 +16,4 @@ def get_gemini_response():
     model="gemini-2.0-flash", contents="Explain how AI works in a few words"
   )
 
-GeminiDep = Annotated[GenerateContentResponse, Depends(get_gemini_response())]
+GeminiDep = Annotated[GenerateContentResponse, Depends(get_gemini_response)]

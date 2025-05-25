@@ -1,0 +1,5 @@
+name: dataveriry-client
+image: schweigenderflugel/dataverity-client
+replicas: 3
+serviceName: dataverity-service
+sourcePort: 80

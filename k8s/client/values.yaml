@@ -1,5 +1,4 @@
-name: dataveriry-client
-image: schweigenderflugel/dataverity-client
+name: client
+namespace: frontend
+image: schweigenderflugel/dataverity:1.0.1-client
 replicas: 3
-serviceName: dataverity-service
-sourcePort: 80

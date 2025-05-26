@@ -2,17 +2,15 @@ releases:
   - name: client
     namespace: frontend
     createNamespace: true
+    installed: true
     chart: ./client
     values:
     - ./client/values.yaml
-    - ./client/frontend.secrets.yaml
-    wait: true
 
   - name: server
     namespace: backend
     createNamespace: true
+    installed: true
     chart: ./server
     values:
     - ./server/values.yaml
-    - ./server/backend.secrets.yaml
-    wait: true

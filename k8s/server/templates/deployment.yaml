@@ -22,8 +22,8 @@ spec:
         ports:
         - containerPort: 3000
         envFrom:
-          secretRef:
-            name: dataverity-server-secret
+          - secretRef:
+              name: dataverity-server-secrets
         imagePullPolicy: Always
         resources:
           requests:

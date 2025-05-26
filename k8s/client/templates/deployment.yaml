@@ -18,12 +18,12 @@ spec:
     spec:
       containers:
       - image: {{ .Values.image }}
-        name: lawcase-server-auth-service
+        name: dataverity-client
         ports:
-        - containerPort: 3000
+        - containerPort: 80
         envFrom:
-          secretRef:
-            name: frontend-secrets
+          - secretRef:
+              name: dataverity-client-secrets
         imagePullPolicy: Always
         resources:
           requests:

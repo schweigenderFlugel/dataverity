@@ -25,19 +25,16 @@ RUN npm run build
 
 RUN npm prune --production
 
-FROM node:22-alpine3.21 AS runner
+FROM nginx:1.28-alpine3.21 AS runner
 
-WORKDIR /app
+RUN apk add --no-cache gettext
 
-RUN npm install -g serve
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY env.template.js /usr/share/nginx/html/env.template.js
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY scripts/entrypoint-docker.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-COPY --from=build /app/package*.json ./
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/dist ./
+EXPOSE 80
 
-RUN addgroup -g 1234 dataverity-group && \
-  adduser -D -u 1234 -G dataverity-group dataverity-user
-
-USER dataverity-user:dataverity-group
-
-CMD [ "serve", "-s", "-l", "5173", "." ]
+CMD ["sh", "entrypoint.sh"]

@@ -2,10 +2,10 @@ name: dataverity-client
 
 services:
   client:
-    image: schweigenderflugel/dataverity:1.0.0-client
+    image: schweigenderflugel/dataverity:1.0.1-client
     container_name: dataverity-client
     hostname: localhost
-    volumes:
-      - ./env.js:/app/dist
+    env_file:
+      - ./.env
     ports:
-      - 5173:5173
+      - 5173:80

@@ -5,3 +5,6 @@
 !/vite.config.ts
 !/src
 !/index.html
+!/nginx.conf
+!/scripts
+!/env.template.js

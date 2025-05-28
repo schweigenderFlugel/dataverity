@@ -1,4 +1,4 @@
-name: client
+name: dataverity-client
 namespace: frontend
 image: schweigenderflugel/dataverity:1.0.1-client
-replicas: 3
+replicas: 1

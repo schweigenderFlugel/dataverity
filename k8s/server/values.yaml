@@ -1,4 +1,4 @@
-name: server
+name: dataverity-server
 namespace: backend
-image: schweigenderflugel/dataverity:1.0.1
-replicas: 3
+image: schweigenderflugel/dataverity:1.0.0
+replicas: 1

@@ -18,17 +18,20 @@ spec:
     spec:
       containers:
       - image: {{ .Values.image }}
-        name: lawcase-server-auth-service
+        name: {{ .Values.name }}
         ports:
         - containerPort: 3000
         envFrom:
           - secretRef:
               name: dataverity-server-secrets
+        env:
+          - name: FRONTEND_URL
+            value: http://127.0.0.1:5173
         imagePullPolicy: Always
         resources:
           requests:
-            memory: "64Mi"
+            memory: "256Mi"
             cpu: "250m"
           limits:
-            memory: "128Mi"
+            memory: "512Mi"
             cpu: "500m"

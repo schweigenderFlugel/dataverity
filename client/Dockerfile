@@ -23,8 +23,6 @@ COPY src ./src
 
 RUN npm run build
 
-RUN npm prune --production
-
 FROM nginx:1.28-alpine3.21 AS runner
 
 RUN apk add --no-cache gettext

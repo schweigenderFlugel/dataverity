@@ -24,9 +24,8 @@ spec:
         envFrom:
           - secretRef:
               name: dataverity-server-secrets
-        env:
-          - name: FRONTEND_URL
-            value: http://127.0.0.1:5173
+          - configMapRef:
+              name: dataverity-server-configmap
         imagePullPolicy: Always
         resources:
           requests:

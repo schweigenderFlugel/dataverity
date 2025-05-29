@@ -24,9 +24,8 @@ spec:
         envFrom:
           - secretRef:
               name: dataverity-client-secrets
-        env:
-        - name: VITE_API_URL
-          value: http://dataverity-server-service.backend.svc.cluster.local
+          - configMapRef:
+              name: dataverity-client-configmap
         imagePullPolicy: Always
         resources:
           requests:

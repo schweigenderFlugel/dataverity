@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "properties": {
+    "container": {
+      "description": "Container Image",
+      "type": "object",
+      "properties": {
+        "image": {
+          "description": "Image repository",
+          "type": "string"
+        },
+        "tag": {
+          "description": "Image tag",
+          "type": "string"
+        },
+        "replicas": {
+          "description": "The number of replicas into the cluster",
+          "type": "number"
+        },
+        "port": {
+          "description": "Container port",
+          "type": "number"
+        }
+      },
+      "required": ["image", "tag"]
+    },
+    "name": {
+      "description": "Service name",
+      "type": "string"
+    },
+    "namespace": {
+      "description": "Namespace of the cluster",
+      "type": "string"
+    },
+    "secret": {
+      "description": "Values for the secret file",
+      "type": "object",
+      "properties": {
+        "clerkPublishableKey": {
+          "description": "Clerk Publishable Key",
+          "type": "string"
+        }
+      },
+      "required": ["clerkPublishableKey"]
+    },
+    "config": {
+      "description": "Values for the ConfigMap file",
+      "type": "object",
+      "properties": {
+        "apiUrl": {
+          "description": "Api Url",
+          "type": "string"
+        }
+      },
+      "required": ["apiUrl"]
+    }
+  },
+  "name": {
+    "description": "Service name",
+    "type": "string"
+  },
+  "required": ["name"],
+  "title": "Values",
+  "type": "object"
+}

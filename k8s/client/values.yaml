@@ -1,4 +1,14 @@
 name: dataverity-client
 namespace: frontend
-image: schweigenderflugel/dataverity:1.0.1-client
-replicas: 1
+
+container:
+  image: schweigenderflugel/dataverity
+  tag: 1.0.1-client
+  replicas: 1
+  port: 80
+
+secret:
+  clerkPublishableKey:
+
+config:
+  apiUrl:

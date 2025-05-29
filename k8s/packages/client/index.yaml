@@ -3,7 +3,7 @@ entries:
   client:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-05-29T00:17:15.3718214-03:00"
+    created: "2025-05-29T11:37:19.1748448-03:00"
     description: A Helm chart for Kubernetes for dataverity client
     digest: c3fb3e81a1bf3f714c82ee776cdd435c5c2be97c95d47cb31c32f0a6ea9edd66
     name: client
@@ -11,4 +11,4 @@ entries:
     urls:
     - client-1.0.0.tgz
     version: 1.0.0
-generated: "2025-05-29T00:17:15.3687866-03:00"
+generated: "2025-05-29T11:37:19.1659795-03:00"

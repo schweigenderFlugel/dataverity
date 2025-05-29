@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  client:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-05-29T11:37:28.6514815-03:00"
+    description: A Helm chart for Kubernetes for dataverity server
+    digest: eeb5a12e11581152dcefbd7e0418cdb67d44309a83752144d9beae18dcc5c651
+    name: client
+    type: application
+    urls:
+    - client-1.0.0.tgz
+    version: 1.0.0
+generated: "2025-05-29T11:37:28.6503904-03:00"

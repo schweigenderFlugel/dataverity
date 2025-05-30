@@ -21,6 +21,17 @@ Then execute the command to install the chart:
 helmfile sync
 ```
 
+The kubernetes service uses LoadBalancer, so make sure to provide an external ip to access to the app through the browser. Execute the following command:
+```
+minikube tunnel
+```
+
+Check tha evevything is running:
+
+```
+kubectl get all -n frontend
+```
+
 Before yo finish, delete the chart installed:
 
 ```

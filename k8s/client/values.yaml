@@ -8,7 +8,7 @@ container:
   port: 80
 
 secret:
-  clerkPublishableKey:
+  clerkPublishableKey: 
 
 config:
   apiUrl:

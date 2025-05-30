@@ -9,6 +9,12 @@ container:
 
 secret:
   clerkApiKey:
+  databaseUrl:
+  geminiApiKey:
+  redisHost:
+  redisPassword:
+  redisPort:
+  redisUsername:
 
 config:
   frontendUrl:

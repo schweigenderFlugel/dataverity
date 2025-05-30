@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ .Values.name }}
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: {{ .Values.name }}
   ports:

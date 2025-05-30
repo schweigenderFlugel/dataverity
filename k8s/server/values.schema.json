@@ -31,6 +31,30 @@
       "clerkApiKey": {
         "description": "Clerk Publishable Key",
         "type": "string"
+      },
+      "databaseUrl": {
+        "description": "Database url",
+        "type": "string"
+      },
+      "geminiApiKey": {
+        "description": "Gemini api key",
+        "type": "string"
+      },
+      "redisHost": {
+        "description": "Redis host",
+        "type": "string"
+      },
+      "redisPassword": {
+        "description": "Redis password",
+        "type": "string"
+      },
+      "redisPort": {
+        "description": "Redis port",
+        "type": "number"
+      },
+      "redisUsername": {
+        "description": "Redis username",
+        "type": "string"
       }
     },
     "required": ["clerkPublishableKey"]

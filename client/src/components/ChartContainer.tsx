@@ -75,7 +75,7 @@ const ChartContainer = ({ reports }: { reports: Reports[] }) => {
         </svg>
       </button>
       <div className="flex items-center justify-end p-2">
-        <div className="max-w-max bg-(--color-secondary) rounded-lg p-2 space-y-2">
+        <div className="w-full bg-(--color-secondary) rounded-lg p-2 space-y-2">
           {reports.map((report, index) => (
             <div key={index}>
               <p className="font-bold text-2xl">{report.nombre}</p>

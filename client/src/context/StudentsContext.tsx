@@ -14,7 +14,7 @@ interface StudentsContextType {
   fetchStudents: () => void;
   submitCreateStudent: (data: StudentForm) => void;
   submitUpdateStudent: (data: StudentForm) => void;
-  loading: boolean; // <-- Agrega loading aquí
+  loading: boolean;
 }
 
 const StudentsContext = createContext<StudentsContextType | undefined>(
@@ -36,7 +36,7 @@ export const StudentsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const fetchStudents = () => {
-    setLoading(true); // <-- Empieza loading
+    setLoading(true);
     withToken(async (token) => {
       try {
         await register(token);
@@ -46,25 +46,21 @@ export const StudentsProvider = ({ children }: { children: ReactNode }) => {
         toast.error("Error al obtener la lista de estudiantes");
         console.log(error);
       } finally {
-        setLoading(false); // <-- Termina loading
+        setLoading(false);
       }
     });
   };
-
-  useEffect(()=> {
-    fetchStudents();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   const submitCreateStudent = (data: StudentForm) => {
     withToken(async (token) => {
       try {
         await createStudent(data, token);
         toast.success("Estudiante creado correctamente");
-        fetchStudents(); // Aquí se actualiza la lista
       } catch (error) {
         toast.error("Error al crear el estudiante");
         console.log(error);
+      } finally {
+        fetchStudents();
       }
     });
   };
@@ -74,18 +70,19 @@ export const StudentsProvider = ({ children }: { children: ReactNode }) => {
       try {
         await updateStudent(data, token);
         toast.success("Estudiante editado correctamente");
-        fetchStudents(); // Aquí también se actualiza la lista
       } catch (error) {
         toast.error("Error al editar el estudiante");
         console.log(error);
+      } finally {
+        fetchStudents();
       }
     });
   };
 
   useEffect(() => {
-    fetchStudents()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    fetchStudents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <StudentsContext.Provider
@@ -94,7 +91,7 @@ export const StudentsProvider = ({ children }: { children: ReactNode }) => {
         fetchStudents,
         submitCreateStudent,
         submitUpdateStudent,
-        loading, // <-- Expón loading
+        loading,
       }}
     >
       {children}

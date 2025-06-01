@@ -17,7 +17,7 @@ spec:
         app: {{ .Values.name }}
     spec:
       containers:
-      - image: "{{ required "image.repo is required" .Values.container.image }}:{{ required "image.tag is required" .Values.container.tag }}"
+      - image: "{{ required "image.repo is required" .Values.container.image }}:{{ required "container.tag is required" .Values.container.tag }}"
         name: {{ .Values.name | default "server" }}
         ports:
           - containerPort: {{ .Values.container.port | default 3000 }}

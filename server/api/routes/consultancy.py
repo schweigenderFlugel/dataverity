@@ -76,7 +76,7 @@ async def create_student(
   '/{id_estudiante}',
   status_code=201,
   tags=['Consultancy'], 
-  summary='Create a new consult',
+  summary='Update a consult',
   responses={
     201: Response(
       description='Student successfully udpated',
@@ -99,7 +99,7 @@ async def create_student(
       message="Error inesperado!"
     ).custom_response(),
   },
-  )
+)
 async def update_student(
   auth: AuthDep,
   session: DatabaseDep,

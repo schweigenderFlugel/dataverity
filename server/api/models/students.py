@@ -74,10 +74,7 @@ class StudentsResponse(StudentsBase, StudentIdModel):
 class StudentCreate(StudentsBase):
   pass
 
-optional_fields = {
-  field: (Optional[typ], None)
-  for field, typ in StudentsBase.__annotations__.items()
-}
+optional_fields = {field: (Optional[typ], None) for field, typ in StudentsBase.__annotations__.items()}
 
 StudentUpdate = create_model(
     "StudentUpdate",

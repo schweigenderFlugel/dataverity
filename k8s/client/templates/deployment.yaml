@@ -23,9 +23,9 @@ spec:
         - containerPort: {{ .Values.container.port | default 80 }}
         envFrom:
           - secretRef:
-              name: dataverity-client-secrets
+              name: {{ .Values.name }}-secrets
           - configMapRef:
-              name: dataverity-client-configmap
+              name: {{ .Values.name }}-configmap
         imagePullPolicy: Always
         resources:
           requests:
